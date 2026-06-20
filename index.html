@@ -1,47 +1,88 @@
-
-<h2 class="sr-only">Türkiye 2026 — interaktif senaryo oyunu, mutlak butlan sonrası iki yol</h2>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buradan Nereye? — Türkiye 2026</title>
 <style>
+:root {
+  --cp: #1a1a1a; --cs: #555; --ct: #888;
+  --cd: #991f1f; --ci: #1a5f8a; --cw: #7a5200; --cg: #1a6e2e;
+  --bgp: #ffffff; --bgs: #f4f4f2;
+  --bgd: #fde8e8; --bgi: #e3f0fa; --bgw: #fef8e3;
+  --brt: #e0e0e0; --brs: #c8c8c8;
+  --brd: #c87070; --bri: #5a9dc4; --brw: #b08a1e;
+  --fs: system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fe: Georgia,'Times New Roman',serif;
+  --fm: 'SF Mono','Fira Code','Courier New',monospace;
+  --rm: 8px; --rl: 12px;
+}
+@media(prefers-color-scheme:dark){
+  :root {
+    --cp: #f0f0f0; --cs: #aaa; --ct: #666;
+    --cd: #e07070; --ci: #6ab0d8; --cw: #c9a84c; --cg: #7fc890;
+    --bgp: #1c1c1c; --bgs: #151515;
+    --bgd: #2d1010; --bgi: #0d2535; --bgw: #2d2200;
+    --brt: #2e2e2e; --brs: #3e3e3e;
+    --brd: #7a2020; --bri: #1a5278; --brw: #7a5c00;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bgs);color:var(--cp);font-family:var(--fs);min-height:100vh}
+.header{border-bottom:1px solid var(--brt);background:var(--bgp);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.hl{font-size:12px;color:var(--ct);font-family:var(--fm);letter-spacing:.5px}
+.container{max-width:660px;margin:0 auto;padding:40px 24px 80px}
 .sc{display:none}.sc.on{display:block;animation:fi .3s ease}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.disp{font-size:22px;font-weight:500;color:var(--color-text-primary);line-height:1.3;margin-bottom:16px;font-family:var(--font-serif)}
-p.ld{font-size:15px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:12px}
-p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-bottom:14px}
-.qt{border-left:2px solid var(--color-border-secondary);padding:12px 16px;margin:16px 0;color:var(--color-text-secondary);font-size:14px;line-height:1.65;font-family:var(--font-serif);border-radius:0}
-.cd{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 18px;margin-bottom:10px}
-.sc-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px;margin-bottom:16px}
-.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin-bottom:10px;font-family:var(--font-mono)}
-.ta{background:var(--color-background-danger);color:var(--color-text-danger)}.tb{background:var(--color-background-info);color:var(--color-text-info)}.tn{background:var(--color-background-warning);color:var(--color-text-warning)}
-.btn{display:block;width:100%;padding:14px 18px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);color:var(--color-text-primary);font-size:15px;text-align:left;cursor:pointer;margin-bottom:10px;font-family:var(--font-sans);transition:background .15s}
-.btn:hover{background:var(--color-background-secondary)}
-.btn.pr{border-color:var(--color-border-info);color:var(--color-text-info);text-align:center;font-weight:500}
-.btn.ba{border-left:3px solid var(--color-border-danger);border-radius:0}.btn.bb{border-left:3px solid var(--color-border-info);border-radius:0}
-.cbtn{display:block;width:100%;padding:14px 18px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);color:var(--color-text-primary);font-size:15px;text-align:left;cursor:pointer;margin-bottom:10px;font-family:var(--font-sans);position:relative;transition:background .15s,opacity .3s}
-.cbtn:hover{background:var(--color-background-secondary)}
-.cbtn.crossed{opacity:0.2;pointer-events:none}
-.cbtn.crossed::after{content:'';position:absolute;top:50%;left:18px;right:18px;height:2px;background:var(--color-text-danger);transform:translateY(-50%)}
-.ob{background:var(--color-background-danger);padding:18px;margin:14px 0;opacity:0;transition:opacity .6s;display:none}
+.disp{font-size:22px;font-weight:500;color:var(--cp);line-height:1.3;margin-bottom:16px;font-family:var(--fe)}
+p.ld{font-size:15px;color:var(--cs);line-height:1.7;margin-bottom:12px}
+p.ky{font-size:15px;color:var(--cp);line-height:1.7;margin-bottom:14px}
+.qt{border-left:2px solid var(--brs);padding:12px 16px;margin:16px 0;color:var(--cs);font-size:14px;line-height:1.65;font-family:var(--fe);border-radius:0}
+.cd{background:var(--bgp);border:.5px solid var(--brt);border-radius:var(--rl);padding:14px 18px;margin-bottom:10px}
+.sc-box{background:var(--bgs);border:.5px solid var(--brt);border-radius:var(--rl);padding:16px;margin-bottom:16px;border:1px solid var(--brt)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--rm);margin-bottom:10px;font-family:var(--fm)}
+.ta{background:var(--bgd);color:var(--cd)}.tb{background:var(--bgi);color:var(--ci)}.tw{background:var(--bgw);color:var(--cw)}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-family:var(--fm);border:.5px solid var(--brs);color:var(--ct);margin-bottom:10px}
+.btn{display:block;width:100%;padding:14px 18px;background:var(--bgp);border:.5px solid var(--brs);border-radius:var(--rm);color:var(--cp);font-size:15px;text-align:left;cursor:pointer;margin-bottom:10px;font-family:var(--fs);transition:background .15s}
+.btn:hover{background:var(--bgs)}
+.btn.pr{border-color:var(--bri);color:var(--ci);text-align:center;font-weight:500}
+.btn.ba{border-left:3px solid var(--brd);border-radius:0}.btn.bb{border-left:3px solid var(--bri);border-radius:0}
+.cbtn{display:block;width:100%;padding:14px 18px;background:var(--bgp);border:.5px solid var(--brs);border-radius:var(--rm);color:var(--cp);font-size:15px;text-align:left;cursor:pointer;margin-bottom:10px;font-family:var(--fs);position:relative;transition:background .15s,opacity .3s}
+.cbtn:hover{background:var(--bgs)}
+.cbtn.crossed{opacity:.2;pointer-events:none}
+.cbtn.crossed::after{content:'';position:absolute;top:50%;left:18px;right:18px;height:2px;background:var(--cd);transform:translateY(-50%)}
+.ob{background:var(--bgd);padding:18px;margin:14px 0;opacity:0;transition:opacity .6s;display:none}
 .ob.show{opacity:1;display:block}
-.ob-lbl{font-size:10px;letter-spacing:1.5px;color:var(--color-text-danger);font-family:var(--font-mono);margin-bottom:8px}
-.ob-txt{font-size:15px;font-weight:500;color:var(--color-text-danger);line-height:1.5;font-family:var(--font-mono);min-height:40px}
+.ob-lbl{font-size:10px;letter-spacing:1.5px;color:var(--cd);font-family:var(--fm);margin-bottom:8px}
+.ob-txt{font-size:15px;font-weight:500;color:var(--cd);line-height:1.5;font-family:var(--fm);min-height:40px}
 .moment{display:none}.moment.on{display:block}
 .mc{display:flex;gap:8px;margin-top:14px;align-items:center}
 .mc .btn{width:auto;padding:7px 14px;margin-bottom:0}
-.mc .btn:disabled{opacity:0.3;cursor:default}
-.mct{font-size:12px;color:var(--color-text-tertiary);font-family:var(--font-mono);margin-left:auto}
+.mc .btn:disabled{opacity:.3;cursor:default}
+.mct{font-size:12px;color:var(--ct);font-family:var(--fm);margin-left:auto}
 .g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:16px}
-.chk{display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--color-text-secondary);line-height:1.4}
-.yes{color:var(--color-text-success)}.no{color:var(--color-text-danger)}.maybe{color:var(--color-text-warning)}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:0.5px solid var(--color-border-tertiary)}
-.bk{background:none;border:none;color:var(--color-text-tertiary);font-size:14px;cursor:pointer;font-family:var(--font-sans);padding:0;width:auto}
-.bk:hover{color:var(--color-text-secondary);background:none}
-.ds{font-family:var(--font-mono);font-size:11px;color:var(--color-text-tertiary);margin-bottom:8px}
-.dim{font-size:13px;color:var(--color-text-tertiary);line-height:1.5;margin-top:10px}
-.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-family:var(--font-mono);border:0.5px solid var(--color-border-secondary);color:var(--color-text-tertiary);margin-bottom:10px}
+.chk{display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--cs);line-height:1.4}
+.yes{color:var(--cg)}.no{color:var(--cd)}.maybe{color:var(--cw)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:.5px solid var(--brt)}
+.bk{background:none;border:none;color:var(--ct);font-size:14px;cursor:pointer;font-family:var(--fs);padding:0;width:auto}
+.bk:hover{color:var(--cs)}
+.ds{font-family:var(--fm);font-size:11px;color:var(--ct);margin-bottom:8px}
+.dim{font-size:13px;color:var(--ct);line-height:1.5;margin-top:10px}
+.footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--ct);font-family:var(--fm);border-top:1px solid var(--brt);margin-top:40px}
 </style>
+</head>
+<body>
+
+<div class="header">
+  <span class="hl">türkiye 2026 — senaryo oyunu</span>
+  <span class="hl">haziran 2026</span>
+</div>
+
+<div class="container">
 
 <div class="sc on" id="s0">
   <div class="ds">12 Haziran 2026 · İstanbul</div>
-  <h2 class="disp">Standart bir sabah.</h2>
+  <h1 class="disp">Standart bir sabah.</h1>
   <div class="sc-box"><p class="ld" style="margin:0">Telefonu açıyorsun. Bildirimler birikmiş. WhatsApp grupları şişmiş. Twitter/X karışık. Normalde bu kadar değil.</p></div>
   <p class="ld">Eğil, bak. Ne var?</p>
   <button class="btn pr" onclick="go('s1')">Telefonu aç →</button>
@@ -49,12 +90,12 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
 
 <div class="sc" id="s1">
   <div class="ds">12 Haziran 2026 · 08:14</div>
-  <div style="background:var(--color-background-danger);padding:18px;margin-bottom:12px">
-    <div style="font-size:10px;letter-spacing:2px;color:var(--color-text-danger);font-family:var(--font-mono);margin-bottom:10px">son dakika</div>
-    <p style="font-size:19px;font-weight:500;color:var(--color-text-danger);line-height:1.3;font-family:var(--font-serif);margin:0">"CHP'nin iki kurultayı mahkeme kararıyla yok hükmünde sayıldı — mutlak butlan"</p>
+  <div style="background:var(--bgd);padding:18px;margin-bottom:12px">
+    <div style="font-size:10px;letter-spacing:2px;color:var(--cd);font-family:var(--fm);margin-bottom:10px">son dakika</div>
+    <p style="font-size:19px;font-weight:500;color:var(--cd);line-height:1.3;font-family:var(--fe);margin:0">"CHP'nin iki kurultayı mahkeme kararıyla yok hükmünde sayıldı — mutlak butlan"</p>
   </div>
-  <div class="cd" style="border-left:3px solid var(--color-border-warning);border-radius:0">
-    <p class="ld" style="margin:0">Yani: Kılıçdaroğlu mahkeme kararıyla geri döndü. 78 yaşında. "Arınma" söylemiyle. Özgür Özel'in genel başkanlığı tartışmalı. Kılıçdaroğlu diyor: "Kayyum istemedim, bu kararı kabul etmekten başka yolum yoktu."</p>
+  <div class="cd" style="border-left:3px solid var(--brw);border-radius:0">
+    <p class="ld" style="margin:0">Yani: Kılıçdaroğlu mahkeme kararıyla geri döndü. 78 yaşında. "Arınma" söylemiyle. Özgür Özel'in genel başkanlığı tartışmalı. Kılıçdaroğlu diyor ki: "Kayyum istemedim, bu kararı kabul etmekten başka yolum yoktu."</p>
   </div>
   <p class="ky">Sabah haberleri açıkken ilk tepkin ne?</p>
   <div id="ch1">
@@ -64,7 +105,7 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
   </div>
   <div id="rb1">
     <div class="ob" id="ob1"><div class="ob-lbl" id="ol1"></div><div class="ob-txt" id="ot1"></div></div>
-    <button class="btn pr" id="nx1" style="display:none" onclick="go('s2')">Devam et →</button>
+    <button class="btn pr" id="nx1" style="display:none">Devam et →</button>
   </div>
 </div>
 
@@ -79,12 +120,12 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
   </div>
   <div id="rb2">
     <div class="ob" id="ob2"><div class="ob-lbl" id="ol2"></div><div class="ob-txt" id="ot2"></div></div>
-    <button class="btn pr" id="nx2" style="display:none" onclick="go('s3')">Devam et →</button>
+    <button class="btn pr" id="nx2" style="display:none">Devam et →</button>
   </div>
 </div>
 
 <div class="sc" id="s3">
-  <h2 class="disp">Her ne yapmış olsan.</h2>
+  <h1 class="disp">Her ne yapmış olsan.</h1>
   <p class="ld">Yazdın ya da yazmadın. Konuştun ya da susmayı seçtin.</p>
   <p class="ky">Bundan sonrası iki yoldan birinde gidecek. Bu yolu sen belirlemeyeceksin — ama içinden geçeceksin.</p>
   <div class="qt">Tarihi şekillendiren kararlar genellikle "vatandaşın tercihi" kategorisinde gelmiyor. Geliyorlar ama üstten, sessizce, resmi bir tebliğ formatında.</div>
@@ -103,21 +144,21 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
 
 <div class="sc" id="s4a">
   <div class="tag ta">Senaryo A</div>
-  <h2 class="disp">"Bu böyle gidecek"</h2>
+  <h1 class="disp">"Bu böyle gidecek"</h1>
   <div id="ma">
     <div class="moment on">
       <div class="ds">Eylül 2026</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-danger);border-radius:0"><p class="ky" style="margin-bottom:8px">CHP, Kılıçdaroğlu-Özel çekişmesiyle 2028'e giriyor</p><p class="ld" style="margin:0">Kılıçdaroğlu "arınma" söylemini sürdürüyor ama CHP seçmeninin gözünde giderek "kayyumdan ne farkı var" sorusuna dönüşüyor. Parti içi tartışma bitmiyor. Günlük hayatta: belirsizlik normalleşiyor.</p></div>
+      <div class="cd" style="border-left:3px solid var(--brd);border-radius:0"><p class="ky" style="margin-bottom:8px">CHP, Kılıçdaroğlu-Özel çekişmesiyle 2028'e giriyor</p><p class="ld" style="margin:0">Kılıçdaroğlu "arınma" söylemini sürdürüyor ama CHP seçmeninin gözünde giderek "kayyumdan ne farkı var" sorusuna dönüşüyor. Parti içi tartışma bitmiyor. Günlük hayatta: belirsizlik normalleşiyor.</p></div>
       <p class="dim">Sen bu haberi okudun. Bir şey değişti mi? Hayır. Ama bir şeyler kaydı.</p>
     </div>
     <div class="moment">
       <div class="ds">Mart 2027</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-danger);border-radius:0"><p class="ky" style="margin-bottom:8px">İmamoğlu tutuklu, Demirtaş içeride, Kılıçdaroğlu aktif</p><p class="ld" style="margin:0">Tutukluluklar uzatıldı. Diploma davası devam ediyor. Kürt meselesinde söylem var, adım yok. CHP hem muhalefet hem de kendi içinde dava açıyor — bir yanda Erdoğan, öte yanda Özel'in hesabı.</p></div>
+      <div class="cd" style="border-left:3px solid var(--brd);border-radius:0"><p class="ky" style="margin-bottom:8px">İmamoğlu tutuklu, Demirtaş içeride</p><p class="ld" style="margin:0">Tutukluluklar uzatıldı. Diploma davası devam ediyor. Kürt meselesinde söylem var, adım yok. CHP hem Erdoğan'a hem de kendi içinde dava açıyor.</p></div>
       <p class="dim">Bu haberler artık sana "normal" geliyor. Bu normalizasyon da bir şey.</p>
     </div>
     <div class="moment">
       <div class="ds">2028 seçimleri öncesi</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-danger);border-radius:0"><p class="ky" style="margin-bottom:8px">"Serbest ama adil olmayan seçim"</p><p class="ld" style="margin:0">Seçimler yapılıyor. İmamoğlu aday olamıyor — diploma engeli kalktı ama ceza davası devam ediyor. CHP adayı tanınmıyor. Kılıçdaroğlu yeniden aday mı? Belirsizlik sistem için çok kullanışlı.</p></div>
+      <div class="cd" style="border-left:3px solid var(--brd);border-radius:0"><p class="ky" style="margin-bottom:8px">"Serbest ama adil olmayan seçim"</p><p class="ld" style="margin:0">Seçimler yapılıyor. İmamoğlu aday olamıyor. Yeni CHP adayı tanınmıyor. Kılıçdaroğlu yeniden aday mı? Belirsizlik sistem için çok kullanışlı.</p></div>
       <p class="dim">Senaryo A kapandı. Ya da kapanmadı — devam etti.</p>
     </div>
   </div>
@@ -133,21 +174,21 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
 <div class="sc" id="s4b">
   <div class="tag tb">Senaryo B · spekülatif</div>
   <div class="pill">kaynak: Ankara kulisleri / Nuray Babacan</div>
-  <h2 class="disp">"Yumuşak geçiş"</h2>
+  <h1 class="disp">"Yumuşak geçiş"</h1>
   <div id="mb">
     <div class="moment on">
       <div class="ds">Eylül 2026</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-info);border-radius:0"><p class="ky" style="margin-bottom:8px">Kulislerde bir senaryo dolaşıyor</p><p class="ld" style="margin:0">Gelecek Partisi Milletvekili Kani Torun'un meclis kürsüsünden ana hatlarını çizdiği öneri iktidar partisi dahil çeşitli çevrelerde analiz ediliyor. Özet: <strong>Anayasa değişikliğiyle güçlendirilmiş parlamenter sisteme geçiş.</strong> Erdoğan bir dönem yetkisiz-sembolik cumhurbaşkanı olarak kalıyor.</p></div>
+      <div class="cd" style="border-left:3px solid var(--bri);border-radius:0"><p class="ky" style="margin-bottom:8px">Kulislerde bir senaryo dolaşıyor</p><p class="ld" style="margin:0">Gelecek Partisi Milletvekili Kani Torun'un meclis kürsüsünden ana hatlarını çizdiği öneri iktidar partisi dahil çeşitli çevrelerde analiz ediliyor. Özet: <strong>Anayasa değişikliğiyle güçlendirilmiş parlamenter sisteme geçiş.</strong> Erdoğan bir dönem yetkisiz-sembolik cumhurbaşkanı olarak kalıyor.</p></div>
       <p class="dim">Resmi bir açıklama yok. Ama kulislerde "dirsek teması" var.</p>
     </div>
     <div class="moment">
       <div class="ds">Ocak 2027</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-info);border-radius:0"><p class="ky" style="margin-bottom:8px">Anayasa değişikliği aşamasında: eş zamanlı serbest bırakmalar</p><p class="ld" style="margin:0">İmamoğlu serbest. Demirtaş serbest. Diploma sorunu kalmıyor — İmamoğlu başbakan adayı olabilir. Erdoğan'a "onurlu veda" sağlanıyor: ailesi ve yakın çevresi koruma altına alınıyor. Yolsuzlukların hesabı <em>Erdoğan ailesi korunarak</em> soruluyor.</p></div>
+      <div class="cd" style="border-left:3px solid var(--bri);border-radius:0"><p class="ky" style="margin-bottom:8px">Anayasa değişikliği aşamasında: eş zamanlı serbest bırakmalar</p><p class="ld" style="margin:0">İmamoğlu serbest. Demirtaş serbest. Diploma sorunu kalmıyor — İmamoğlu başbakan adayı olabilir. Erdoğan'a "onurlu veda" sağlanıyor: ailesi ve yakın çevresi koruma altına alınıyor. Yolsuzlukların hesabı <em>Erdoğan ailesi korunarak</em> soruluyor.</p></div>
       <p class="dim">Bunları sen kazanmadın. Yukarıda bir anlaşma oldu. Ama kazanım senin için gerçek.</p>
     </div>
     <div class="moment">
       <div class="ds">2028</div>
-      <div class="cd" style="border-left:3px solid var(--color-border-info);border-radius:0"><p class="ky" style="margin-bottom:8px">İmamoğlu-Özel ikilisi tek başına iktidar. Ve bir twist.</p><p class="ld" style="margin:0">Seçimler rekabetçi, CHP veya yeni parti %45'i aştı. Demirtaş DEM'i "Türkiye Partisi"ne dönüştürüyor — HDP'den çok daha geniş bir tabana yayılıyor.<br><br><strong>Twist:</strong> Bu senaryoyu savunanlar muhafazakar mahalleye daha yakın. "Muhafazakarları az hasarla kurtarma planı" da denebilir. Erdoğan ve ailesi hesap vermeyecek.</p></div>
+      <div class="cd" style="border-left:3px solid var(--bri);border-radius:0"><p class="ky" style="margin-bottom:8px">İmamoğlu-Özel ikilisi tek başına iktidar. Ve bir twist.</p><p class="ld" style="margin:0">Seçimler rekabetçi, CHP veya yeni parti %45'i aştı. Demirtaş DEM'i "Türkiye Partisi"ne dönüştürüyor — HDP'den çok daha geniş bir tabana yayılıyor.<br><br><strong>Twist:</strong> Bu senaryoyu savunanlar muhafazakar mahalleye daha yakın. "Muhafazakarları az hasarla kurtarma planı" da denebilir. Erdoğan ve ailesi hesap vermeyecek.</p></div>
       <p class="dim">İspanya'da Juan Carlos kaldı. Demokrasi de geldi. İkisi aynı anda mümkündü. Ama adil değildi.</p>
     </div>
   </div>
@@ -161,9 +202,9 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
 </div>
 
 <div class="sc" id="s5">
-  <h2 class="disp">Her iki senaryoda sabit kalan şey.</h2>
+  <h1 class="disp">Her iki senaryoda sabit kalan şey.</h1>
   <div class="g2">
-    <div class="cd" style="border-left:3px solid var(--color-border-danger);border-radius:0">
+    <div class="cd" style="border-left:3px solid var(--brd);border-radius:0">
       <div class="tag ta">Senaryo A</div>
       <div class="chk"><span class="no">✗</span><span>Kürt siyasi hakları</span></div>
       <div class="chk"><span class="no">✗</span><span>İmamoğlu serbest</span></div>
@@ -171,7 +212,7 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
       <div class="chk"><span class="no">✗</span><span>Kapsayıcı anayasa</span></div>
       <div class="chk"><span class="no">✗</span><span>2028 rekabetçi seçim</span></div>
     </div>
-    <div class="cd" style="border-left:3px solid var(--color-border-info);border-radius:0">
+    <div class="cd" style="border-left:3px solid var(--bri);border-radius:0">
       <div class="tag tb">Senaryo B</div>
       <div class="chk"><span class="yes">✓</span><span>Kürt siyasi hakları</span></div>
       <div class="chk"><span class="yes">✓</span><span>İmamoğlu serbest</span></div>
@@ -180,13 +221,13 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
       <div class="chk"><span class="maybe">~</span><span>Erdoğan: dokunulmaz, korunaklı</span></div>
     </div>
   </div>
-  <div class="cd" style="background:var(--color-background-secondary)"><p class="ld" style="margin:0;color:var(--color-text-primary)">Her iki senaryoda: <strong>sen bu kararları vermedin.</strong><br>A'da onlara maruz kaldın. B'de dahil edilmeden yararlandın — ama B'nin sahipleri seni değil kendilerini kurtarmak için bunu yapıyor.<br>Güç mekanizması değişmedi.</p></div>
+  <div class="cd" style="background:var(--bgs)"><p class="ld" style="margin:0;color:var(--cp)">Her iki senaryoda: <strong>sen bu kararları vermedin.</strong><br>A'da onlara maruz kaldın. B'de dahil edilmeden yararlandın — ama B'nin sahipleri seni değil kendilerini kurtarmak için bunu yapıyor.<br>Güç mekanizması değişmedi.</p></div>
   <div class="qt">Sabahın başında ne paylaştığın, öğle ne söylediğin. Bunlar seni insan yapan şeyler. Ama tablo bunlarla şekillenmedi.</div>
   <button class="btn pr" onclick="go('s6')" style="margin-top:8px">Asıl soru →</button>
 </div>
 
 <div class="sc" id="s6">
-  <h2 class="disp">Hangisi olacak sence?</h2>
+  <h1 class="disp">Hangisi olacak sence?</h1>
   <p class="ld">Olmak istediğin değil — olacağını düşündüğün.</p>
   <button class="btn ba" onclick="vote('a')" style="padding:18px">
     <div class="tag ta" style="margin-bottom:6px">Senaryo A</div>
@@ -196,23 +237,29 @@ p.ky{font-size:15px;color:var(--color-text-primary);line-height:1.7;margin-botto
     <div class="tag tb" style="margin-bottom:6px">Senaryo B</div>
     <div style="font-weight:500">Yumuşak geçiş olur. Mükemmel değil — ama sayfa çevrilir.</div>
   </button>
-  <button class="btn" onclick="vote('c')" style="color:var(--color-text-tertiary);padding:18px">İkisi de değil — bilmiyorum / üçüncü bir şey</button>
+  <button class="btn" onclick="vote('c')" style="color:var(--ct);padding:18px">İkisi de değil — bilmiyorum / üçüncü bir şey</button>
   <div class="nav"><button class="bk" onclick="go('s5')">← geri</button></div>
 </div>
 
 <div class="sc" id="s7">
-  <h2 class="disp" id="rt"></h2>
+  <h1 class="disp" id="rt"></h1>
   <p class="ky" id="rk"></p>
   <p class="ld" id="rb"></p>
   <div class="qt" id="rq"></div>
-  <div style="margin-top:18px;padding-top:16px;border-top:0.5px solid var(--color-border-tertiary)">
-    <p style="font-size:13px;color:var(--color-text-tertiary);line-height:1.6">Sabahın başında ne seçtiğinin sonucu değişmedi. Ama tablonun farkında olmak — nerede durduğunu bilmek — bu başka bir şey.</p>
+  <div style="margin-top:18px;padding-top:16px;border-top:.5px solid var(--brt)">
+    <p style="font-size:13px;color:var(--ct);line-height:1.6">Sabahın başında ne seçtiğinin sonucu değişmedi. Ama tablonun farkında olmak — nerede durduğunu bilmek — bu başka bir şey.</p>
   </div>
-  <button class="btn" onclick="restart()" style="margin-top:12px;text-align:center;color:var(--color-text-tertiary)">↺ Başa dön</button>
+  <button class="btn" onclick="restart()" style="margin-top:12px;text-align:center;color:var(--ct)">↺ Başa dön</button>
+</div>
+
+</div>
+
+<div class="footer">
+  türkiye 2026 · senaryo oyunu · haziran 2026
 </div>
 
 <script>
-function go(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on')}
+function go(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo({top:0,behavior:'smooth'})}
 
 function pick(chId,rbId,lbl,txt,next){
   document.querySelectorAll('#'+chId+' .cbtn').forEach(b=>b.classList.add('crossed'));
@@ -221,8 +268,7 @@ function pick(chId,rbId,lbl,txt,next){
   const ol=ob.querySelector('.ob-lbl');const ot=ob.querySelector('.ob-txt');
   const nx=rb.querySelector('.btn.pr');
   ol.textContent=lbl;
-  setTimeout(()=>{ob.style.display='block';requestAnimationFrame(()=>ob.classList.add('show'));typeIt(ot,txt,28);setTimeout(()=>nx.style.display='block',txt.length*28+500)},700);
-  nx.onclick=()=>go(next);
+  setTimeout(()=>{ob.style.display='block';requestAnimationFrame(()=>ob.classList.add('show'));typeIt(ot,txt,28);setTimeout(()=>{nx.style.display='block';nx.onclick=()=>go(next)},txt.length*28+500)},700);
 }
 
 function typeIt(el,txt,spd){
@@ -242,19 +288,22 @@ function mv(w,d){
 
 function vote(c){
   const d={
-    a:{t:'Senaryo A. Devam.',k:'"Bu böyle gidecek" diyorsun. Belki pesimist — belki sadece gerçekçi.',b:'Türkiye\'nin son yirmi yılı sistemin kendini yeniden üretme kapasitesini defalarca gösterdi. Muhalefet toplandı, vuruldu, yeniden toplandı. Enerji harcandı ama yapı değişmedi. Kılıçdaroğlu arınma söyler, Özel resistance yapar, sistem kendi içinde çözüme devam eder. Bu döngüyü kıracak bir şey görmüyorsan bu ciddi bir gözlem.',q:'Beklentiler aşağı çekilince hayal kırıklıkları azalır. Ama direnme eşiği de düşer. Sistem bunu biliyor.'},
-    b:{t:'Senaryo B. Bir geçiş.',k:'"Yumuşak geçiş olabilir" diyorsun. Adil olmayan ama efektif.',b:'Ankara kulislerinde dolaşan senaryo spekülatif ama boşluktan çıkmıyor. Güçlendirilmiş parlamenter sistem, Erdoğan\'a onurlu çıkış, eş zamanlı serbest bırakmalar — çok bileşenli ama mümkün. Ama önemli bir not: Bu senaryoyu savunanlar muhafazakar mahalleye daha yakın. Seni değil kendilerini kurtarmak istiyorlar. Senin için iyi olan onlar için de iyi olan şey.',q:'"Geçiş dönemi adaletsizliği, uzun dönem istikrarını mümkün kılar." İspanya\'da çalıştı. Arjantin\'de çalışmadı. Türkiye hangisi olur?'},
-    c:{t:'İkisi de değil.',k:'"Tabloya sığmıyor" diyorsun. Bu belki en dürüst cevap.',b:'Türkiye\'nin siyasi tarihi sürprizlere açık. 2013\'te Gezi\'yi kimse tahmin etmedi. 2016\'yı tam kimse tahmin etmedi. Belki gerçek senaryo şu an göremediğimiz üçüncü bir şey. Ya da hiçbir şey. Belirsizliği taşımak naif olmak değil.',q:'Belirsizliği taşımak, bir cevaba zorlamaktan daha zor. Ama bazen daha doğru.'}
+    a:{t:'Senaryo A. Devam.',k:'"Bu böyle gidecek" diyorsun. Belki pesimist — belki sadece gerçekçi.',b:'Türkiye\'nin son yirmi yılı sistemin kendini yeniden üretme kapasitesini defalarca gösterdi. Muhalefet toplandı, vuruldu, yeniden toplandı. Enerji harcandı ama yapı değişmedi. Bu döngüyü kıracak bir şey görmüyorsan bu ciddi bir gözlem.',q:'Beklentiler aşağı çekilince hayal kırıklıkları azalır. Ama direnme eşiği de düşer. Sistem bunu biliyor.'},
+    b:{t:'Senaryo B. Bir geçiş.',k:'"Yumuşak geçiş olabilir" diyorsun. Adil olmayan ama efektif.',b:'Ankara kulislerinde dolaşan senaryo spekülatif ama boşluktan çıkmıyor. Güçlendirilmiş parlamenter sistem, Erdoğan\'a onurlu çıkış, eş zamanlı serbest bırakmalar — çok bileşenli ama mümkün. Önemli not: Bu senaryoyu savunanlar muhafazakar mahalleye yakın. Seni değil kendilerini kurtarmak istiyorlar. Senin için iyi olan onlar için de iyi olan şey.',q:'"Geçiş dönemi adaletsizliği, uzun dönem istikrarını mümkün kılar." İspanya\'da çalıştı. Arjantin\'de çalışmadı. Türkiye hangisi olur?'},
+    c:{t:'İkisi de değil.',k:'"Tabloya sığmıyor" diyorsun. Bu belki en dürüst cevap.',b:'Türkiye\'nin siyasi tarihi sürprizlere açık. 2013\'te Gezi\'yi kimse tahmin etmedi. 2016\'yı tam kimse tahmin etmedi. Belki gerçek senaryo şu an göremediğimiz üçüncü bir şey. Belirsizliği taşımak naif olmak değil.',q:'Belirsizliği taşımak, bir cevaba zorlamaktan daha zor. Ama bazen daha doğru.'}
   };
   const v=d[c];
-  ['rt','rk','rb','rq'].forEach(id=>document.getElementById(id).textContent=v[id.replace('r','')]);
+  document.getElementById('rt').textContent=v.t;
+  document.getElementById('rk').textContent=v.k;
+  document.getElementById('rb').textContent=v.b;
+  document.getElementById('rq').textContent=v.q;
   go('s7');
 }
 
 function restart(){
   document.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('crossed'));
   document.querySelectorAll('.ob').forEach(ob=>{ob.classList.remove('show');ob.style.display='none';ob.querySelector('.ob-lbl').textContent='';ob.querySelector('.ob-txt').textContent=''});
-  ['rb1','rb2'].forEach(id=>{const el=document.getElementById(id);if(el){const pr=el.querySelector('.btn.pr');if(pr)pr.style.display='none'}});
+  ['rb1','rb2'].forEach(id=>{const el=document.getElementById(id);if(el){const pr=el.querySelector('.btn.pr');if(pr){pr.style.display='none';pr.onclick=null}}});
   ms.a=0;ms.b=0;
   ['a','b'].forEach(w=>{
     document.querySelectorAll('#m'+w+' .moment').forEach((m,i)=>m.classList.toggle('on',i===0));
@@ -266,3 +315,5 @@ function restart(){
   go('s0');
 }
 </script>
+</body>
+</html>
