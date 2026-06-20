@@ -3,675 +3,412 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hayat Paketi™ 🌈</title>
+<title>Bunea Minako-Yim 🌈</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --pink:#FFB3C1;--mint:#B5EAD7;--lav:#C7CEEA;
-  --peach:#FFDAC1;--sun:#FDFD96;--sky:#AED6F1;--lilac:#E8C3FF;
-  --dp:#FF6B9D;--dm:#00B894;--dl:#6C5CE7;--do:#E17055;--dy:#FDCB6E;
   --text:#3a3a3a;--texts:#666;--textx:#aaa;
-  --white:rgba(255,255,255,0.88);
-  --r:20px;
+  --white:rgba(255,255,255,0.88);--r:20px;
 }
-
 body{
   background:linear-gradient(135deg,#FFD6EC 0%,#D4EEFF 30%,#D5F5E3 60%,#FFF4CC 100%);
-  background-size:400% 400%;
-  animation:bgwave 12s ease-in-out infinite;
-  min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  color:var(--text);
-  overflow-x:hidden;
+  background-size:400% 400%;animation:bgwave 12s ease-in-out infinite;
+  min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  color:var(--text);overflow-x:hidden;
 }
+@keyframes bgwave{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-@keyframes bgwave{
-  0%,100%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-}
+.ptcl{position:fixed;pointer-events:none;z-index:0;animation:pfloat linear infinite;opacity:.6}
+@keyframes pfloat{0%{transform:translateY(110vh) rotate(0);opacity:0}5%{opacity:.6}95%{opacity:.4}100%{transform:translateY(-80px) rotate(540deg);opacity:0}}
 
-/* Floating particles */
-.ptcl{
-  position:fixed;pointer-events:none;z-index:0;
-  animation:float linear infinite;
-  opacity:0.7;
-}
-@keyframes float{
-  0%{transform:translateY(110vh) rotate(0deg);opacity:0}
-  5%{opacity:.7}
-  95%{opacity:.5}
-  100%{transform:translateY(-80px) rotate(540deg);opacity:0}
-}
-
-/* Screens */
 .sc{display:none;position:relative;z-index:1}
 .sc.on{display:block;animation:fadeUp .4s cubic-bezier(.22,.61,.36,1)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .wrap{max-width:680px;margin:0 auto;padding:32px 20px 140px}
 
-/* Hero */
-.hero{text-align:center;padding:32px 0 24px}
-.big-emoji{font-size:72px;display:block;animation:bigbounce 1.2s ease-in-out infinite}
-@keyframes bigbounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-16px) scale(1.05)}}
-.hero-title{font-size:36px;font-weight:900;margin:12px 0 4px;letter-spacing:-1px}
-.hero-sub{font-size:16px;color:var(--texts);margin-bottom:6px}
+/* TOOLTIPS */
+[data-tip]{position:relative;cursor:help;border-bottom:1.5px dotted rgba(0,0,0,.28);display:inline}
+[data-tip]::after{
+  content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:rgba(28,28,28,.93);color:#fff;padding:8px 12px;border-radius:10px;
+  font-size:12px;line-height:1.5;width:230px;text-align:center;
+  opacity:0;pointer-events:none;transition:opacity .2s;z-index:1000;
+  font-style:normal;font-weight:400;
+}
+[data-tip]:hover::after{opacity:1}
+
+.big-e{font-size:68px;display:block;animation:bb 1.4s ease-in-out infinite;text-align:center}
+@keyframes bb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.04)}}
+
+.hero{text-align:center;padding:28px 0 18px}
+.hero-title{font-size:34px;font-weight:900;margin:10px 0 4px;letter-spacing:-1px}
+.hero-sub{font-size:15px;color:var(--texts);margin-bottom:4px}
 .hero-note{font-size:12px;color:var(--textx)}
 
-/* Intro box */
-.intro-box{
-  background:var(--white);
-  border-radius:var(--r);
-  padding:22px;
-  text-align:center;
-  margin:24px 0;
-  backdrop-filter:blur(8px);
-  box-shadow:0 4px 24px rgba(0,0,0,.07);
-}
-.intro-box p{font-size:14px;color:var(--texts);line-height:1.9}
-.intro-box strong{color:var(--text)}
+.box{background:var(--white);border-radius:var(--r);padding:20px;margin:18px 0;box-shadow:0 4px 22px rgba(0,0,0,.07)}
+.box p{font-size:14px;color:var(--texts);line-height:1.9}
 
-/* Buttons */
-.btn{
-  display:block;width:100%;padding:15px 24px;border:none;
-  border-radius:50px;font-size:16px;font-weight:700;
-  cursor:pointer;text-align:center;
-  transition:transform .15s,box-shadow .15s;
-  margin-bottom:10px;font-family:inherit;
-}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.13)}
+.btn{display:block;width:100%;padding:14px 24px;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;text-align:center;transition:transform .15s,box-shadow .15s;margin-bottom:10px;font-family:inherit}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .btn:active{transform:translateY(0)}
 .btn-pink{background:linear-gradient(135deg,#FF6B9D,#C550A7);color:#fff}
 .btn-mint{background:linear-gradient(135deg,#00B894,#00CEC9);color:#fff}
 .btn-ghost{background:rgba(255,255,255,.8);color:var(--texts);border:1.5px solid rgba(0,0,0,.1)}
-.btn-rainbow{
-  background:linear-gradient(135deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);
-  background-size:200% 200%;
-  animation:rbshift 3s ease infinite;
-  color:#fff;
-}
-@keyframes rbshift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.btn-rb{background:linear-gradient(135deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);background-size:200% 200%;animation:rbs 3s ease infinite;color:#fff}
+@keyframes rbs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-/* CHARACTER CARDS */
-.pkg-card{
-  background:var(--white);
-  border-radius:var(--r);
-  padding:0;
-  margin-bottom:18px;
-  box-shadow:0 6px 28px rgba(0,0,0,.09);
-  overflow:hidden;
-  animation:cardIn .5s cubic-bezier(.22,.61,.36,1) both;
-  border:2px solid rgba(255,255,255,.7);
-}
-@keyframes cardIn{
-  from{opacity:0;transform:translateY(32px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
-}
-.pkg-card:nth-child(1){animation-delay:.08s}
-.pkg-card:nth-child(2){animation-delay:.18s}
-.pkg-card:nth-child(3){animation-delay:.28s}
-.pkg-card:nth-child(4){animation-delay:.38s}
-.pkg-card:nth-child(5){animation-delay:.48s}
+/* CARDS */
+.pkg-card{background:var(--white);border-radius:var(--r);margin-bottom:15px;box-shadow:0 6px 22px rgba(0,0,0,.09);overflow:hidden;animation:cardIn .5s cubic-bezier(.22,.61,.36,1) both;border:2px solid rgba(255,255,255,.7)}
+@keyframes cardIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.pkg-card:nth-child(1){animation-delay:.07s}.pkg-card:nth-child(2){animation-delay:.15s}.pkg-card:nth-child(3){animation-delay:.23s}.pkg-card:nth-child(4){animation-delay:.31s}.pkg-card:nth-child(5){animation-delay:.39s}
 
-.pkg-top{
-  padding:20px 20px 16px;
-  background:linear-gradient(135deg,var(--c1),var(--c2));
-  display:flex;align-items:center;gap:16px;
-}
-.pkg-icon-big{font-size:48px;flex-shrink:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15))}
-.pkg-top-info{}
-.pkg-badge{
-  display:inline-block;
-  background:rgba(255,255,255,.35);
-  color:#fff;
-  font-size:10px;font-weight:800;
-  letter-spacing:1.5px;
-  padding:3px 10px;border-radius:20px;
-  margin-bottom:5px;text-transform:uppercase;
-}
-.pkg-name{font-size:17px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pkg-sub{font-size:12px;color:rgba(255,255,255,.85);margin-top:3px}
+.pkg-top{padding:16px 18px 13px;background:linear-gradient(135deg,var(--c1),var(--c2));display:flex;align-items:center;gap:13px}
+.pkg-icon{font-size:42px;flex-shrink:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,.1))}
+.pkg-badge{display:inline-block;background:rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:2px 9px;border-radius:20px;margin-bottom:3px;text-transform:uppercase}
+.pkg-name{font-size:16px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.1)}
+.pkg-sub{font-size:12px;color:rgba(255,255,255,.82);margin-top:2px}
 
-.pkg-body{padding:18px 20px}
-.pkg-desc{font-size:14px;color:var(--texts);line-height:1.75;margin-bottom:14px}
-
-/* Stat bars */
-.stat-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.stat-lbl{font-size:11px;color:var(--textx);width:140px;flex-shrink:0;font-weight:600;letter-spacing:.3px}
-.stat-bar{flex:1;height:8px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden}
-.stat-fill{height:100%;border-radius:4px;transition:width 1s ease}
-.stat-emoji{font-size:14px;width:20px;text-align:center;flex-shrink:0}
-
-.pkg-tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-.ptag{
-  font-size:11px;background:rgba(0,0,0,.05);
-  border:1px solid rgba(0,0,0,.07);border-radius:20px;
-  padding:4px 10px;color:var(--texts);
-}
-
-.pkg-review{
-  margin-top:14px;font-size:12px;
-  padding:10px 14px;
-  border-radius:12px;
-  background:rgba(0,0,0,.04);
-  color:var(--texts);
-  font-style:italic;
-  line-height:1.6;
-}
+.pkg-body{padding:15px 18px}
+.pkg-desc{font-size:14px;color:var(--texts);line-height:1.75;margin-bottom:13px}
+.stat-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.stat-lbl{font-size:10px;color:var(--textx);width:128px;flex-shrink:0;font-weight:700;letter-spacing:.3px}
+.stat-bar{flex:1;height:7px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden}
+.stat-fill{height:100%;border-radius:4px}
+.stat-e{font-size:13px;width:18px;text-align:center;flex-shrink:0}
+.pkg-tags{margin-top:11px;display:flex;flex-wrap:wrap;gap:5px}
+.ptag{font-size:11px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:3px 9px;color:var(--texts)}
+.pkg-review{margin-top:11px;font-size:12px;padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.04);color:var(--texts);font-style:italic;line-height:1.6}
 .stars{color:#FDCB6E;letter-spacing:1px}
 
-/* Section divider */
-.div-center{text-align:center;margin:28px 0;color:var(--textx);font-size:18px;letter-spacing:8px}
+.div-c{text-align:center;margin:22px 0;color:var(--textx);font-size:18px;letter-spacing:8px}
+.lbl-sm{font-size:11px;letter-spacing:3px;color:var(--textx);text-transform:uppercase;text-align:center;margin-bottom:8px}
 
-/* Summary box */
-.sumbox{
-  background:var(--white);border-radius:var(--r);
-  padding:22px;text-align:center;
-  margin:0 0 24px;
-  box-shadow:0 4px 20px rgba(0,0,0,.07);
-}
-.sumbox p{font-size:14px;color:var(--texts);line-height:1.9}
-
-/* MINAKO TALISMAN */
-.minako-talisman{
-  text-align:center;
-  padding:32px 20px;
-  background:linear-gradient(135deg,rgba(232,195,255,.4),rgba(174,214,241,.4),rgba(181,234,215,.4));
-  border-radius:var(--r);
-  margin:0 0 24px;
-  border:2px dashed rgba(197,80,167,.25);
-  position:relative;
-  overflow:hidden;
-}
-.minako-talisman::before{
-  content:'✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨';
-  position:absolute;top:-8px;left:0;right:0;
-  font-size:20px;letter-spacing:8px;opacity:.3;
-  white-space:nowrap;overflow:hidden;
-}
-.minako-emoji{
-  font-size:64px;
-  display:inline-block;
-  cursor:pointer;
-  animation:minakoFloat 2.5s ease-in-out infinite;
-  filter:drop-shadow(0 6px 12px rgba(197,80,167,.25));
-  transition:transform .2s;
-  position:relative;z-index:1;
-}
-.minako-emoji:hover{transform:scale(1.12) rotate(-5deg)}
-@keyframes minakoFloat{
-  0%,100%{transform:translateY(0) rotate(-3deg)}
-  50%{transform:translateY(-14px) rotate(3deg)}
-}
-.minako-rb{font-size:28px;display:block;margin-bottom:4px;animation:rbspin 4s linear infinite}
-@keyframes rbspin{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
-
-.minako-bubble{
-  background:white;
-  border-radius:20px 20px 20px 4px;
-  padding:14px 18px;
-  display:inline-block;
-  margin:14px auto 0;
-  max-width:320px;
-  box-shadow:0 4px 20px rgba(0,0,0,.1);
-  text-align:left;
-  animation:bubblePop .4s cubic-bezier(.22,.61,.36,1) .5s both;
-  position:relative;z-index:1;
-}
-@keyframes bubblePop{from{transform:scale(.8) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.mname{font-size:11px;color:#C550A7;font-weight:800;letter-spacing:.5px;margin-bottom:5px}
-.mbody{font-size:14px;color:var(--text);line-height:1.65}
-.mclick{
-  display:inline-block;margin-top:10px;
-  background:linear-gradient(135deg,#C550A7,#6C5CE7);
-  color:white;font-size:12px;font-weight:700;
-  padding:6px 14px;border-radius:20px;cursor:pointer;
-  transition:transform .15s;
-  border:none;font-family:inherit;
-}
-.mclick:hover{transform:scale(1.05)}
+/* MINAKO */
+.minako-tal{text-align:center;padding:26px 18px;background:linear-gradient(135deg,rgba(232,195,255,.4),rgba(174,214,241,.4),rgba(181,234,215,.4));border-radius:var(--r);margin:0 0 18px;border:2px dashed rgba(197,80,167,.25);position:relative;overflow:hidden}
+.minako-tal::before{content:'✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨';position:absolute;top:-5px;left:0;right:0;font-size:17px;letter-spacing:12px;opacity:.2;white-space:nowrap;overflow:hidden;pointer-events:none}
+.m-e{font-size:58px;display:inline-block;cursor:pointer;animation:mf 2.5s ease-in-out infinite;filter:drop-shadow(0 5px 10px rgba(197,80,167,.2));transition:transform .2s;position:relative;z-index:1}
+.m-e:hover{transform:scale(1.1) rotate(-5deg)}
+@keyframes mf{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.m-rb{font-size:24px;display:block;margin-bottom:3px;animation:hue 5s linear infinite}
+@keyframes hue{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
+.m-namelbl{font-size:11px;color:#C550A7;font-weight:800;letter-spacing:.5px;margin-top:5px}
+.m-bubble{background:white;border-radius:17px 17px 17px 3px;padding:12px 15px;display:inline-block;margin:12px auto 0;max-width:290px;text-align:left;box-shadow:0 4px 18px rgba(0,0,0,.1);animation:bpop .4s cubic-bezier(.22,.61,.36,1) .4s both;position:relative;z-index:1}
+@keyframes bpop{from{transform:scale(.8) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.mb-who{font-size:10px;color:#C550A7;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
+.mb-txt{font-size:13px;color:var(--text);line-height:1.65}
+.mb-btn{display:inline-block;margin-top:9px;background:linear-gradient(135deg,#C550A7,#6C5CE7);color:white;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;font-family:inherit;transition:transform .15s}
+.mb-btn:hover{transform:scale(1.05)}
 
 /* MINAKO SCREENS */
-.m-screen{
-  background:var(--white);
-  border-radius:var(--r);
-  padding:28px;
-  margin-bottom:20px;
-  box-shadow:0 6px 32px rgba(0,0,0,.09);
-}
-.m-header{display:flex;align-items:center;gap:14px;margin-bottom:22px;padding-bottom:16px;border-bottom:1.5px solid rgba(0,0,0,.06)}
-.m-avatar{font-size:40px;animation:minakoFloat 2.5s ease-in-out infinite;display:inline-block}
-.m-who{font-size:12px;color:#C550A7;font-weight:800;margin-bottom:3px}
-.m-sub{font-size:11px;color:var(--textx)}
-.m-text{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:12px}
-.m-text strong{color:#C550A7}
-.m-aside{
-  background:linear-gradient(135deg,rgba(232,195,255,.2),rgba(174,214,241,.2));
-  border-left:3px solid rgba(197,80,167,.3);
-  border-radius:0 12px 12px 0;
-  padding:14px 16px;margin:14px 0;
-  font-size:13px;color:var(--texts);
-  line-height:1.7;font-style:italic;
-}
+.m-card{background:var(--white);border-radius:var(--r);padding:22px;margin-bottom:16px;box-shadow:0 6px 26px rgba(0,0,0,.09)}
+.m-hdr{display:flex;align-items:center;gap:11px;margin-bottom:16px;padding-bottom:13px;border-bottom:1px solid rgba(0,0,0,.07)}
+.m-av{font-size:34px;animation:mf 2.5s ease-in-out infinite;display:inline-block}
+.m-who2{font-size:11px;color:#C550A7;font-weight:800;margin-bottom:2px}
+.m-sub2{font-size:11px;color:var(--textx)}
+.m-p{font-size:14px;color:var(--text);line-height:1.85;margin-bottom:10px}
+.m-p strong{color:#C550A7}
+.m-aside{background:linear-gradient(135deg,rgba(232,195,255,.2),rgba(174,214,241,.2));border-left:3px solid rgba(197,80,167,.3);border-radius:0 11px 11px 0;padding:11px 14px;margin:12px 0;font-size:13px;color:var(--texts);line-height:1.7}
+.badge-exp{display:inline-block;background:linear-gradient(135deg,rgba(255,179,193,.4),rgba(199,206,234,.4));border:1.5px dashed rgba(197,80,167,.3);font-size:11px;font-weight:700;color:#777;padding:3px 11px;border-radius:20px;margin:7px 0 12px}
+.info-i{border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--ic);background:rgba(0,0,0,.03)}
+.info-h{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.info-b{font-size:13px;color:var(--texts);line-height:1.7}
+.sc-i{border-radius:13px;padding:13px 15px;margin-bottom:8px;border:1.5px solid rgba(0,0,0,.07);background:linear-gradient(135deg,rgba(181,234,215,.25),rgba(174,214,241,.25))}
+.sc-i.warn{background:linear-gradient(135deg,rgba(253,218,193,.3),rgba(249,243,204,.3));border-style:dashed}
+.sc-h{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.sc-b{font-size:13px;color:var(--texts);line-height:1.7}
+.rb-text{background:linear-gradient(90deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
 
-/* Info items */
-.info-item{
-  background:rgba(0,0,0,.03);border-radius:14px;
-  padding:14px 16px;margin-bottom:10px;
-  border-left:3px solid var(--ic);
-}
-.info-head{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}
-.info-body{font-size:13px;color:var(--texts);line-height:1.7}
-
-.badge-exp{
-  display:inline-block;
-  background:linear-gradient(135deg,rgba(255,179,193,.5),rgba(199,206,234,.5));
-  border:1.5px dashed rgba(197,80,167,.3);
-  font-size:11px;font-weight:700;color:#777;
-  padding:4px 12px;border-radius:20px;
-  margin:8px 0 14px;letter-spacing:.5px;
-}
-
-/* Scenario items */
-.sc-item{
-  border-radius:16px;padding:16px 18px;margin-bottom:10px;
-  border:1.5px solid rgba(0,0,0,.07);
-  background:linear-gradient(135deg,rgba(181,234,215,.25),rgba(174,214,241,.25));
-}
-.sc-item.warn{background:linear-gradient(135deg,rgba(253,218,193,.3),rgba(249,243,204,.3));border-style:dashed}
-.sc-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px}
-.sc-body{font-size:13px;color:var(--texts);line-height:1.7}
-
-/* Rainbow text */
-.rbtext{
-  background:linear-gradient(90deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;font-weight:900;
-}
-
-/* End screen */
-.end-wrap{text-align:center;padding:48px 20px}
-.end-big{font-size:80px;animation:bigbounce 1.2s ease-in-out infinite;display:inline-block;margin-bottom:16px}
-.end-title{font-size:26px;font-weight:900;margin-bottom:10px}
-.end-sub{font-size:15px;color:var(--texts);line-height:1.8;margin-bottom:28px}
-
-/* Confetti (CSS only) */
-.confetti-wrap{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:200;display:none}
-.confetti-wrap.show{display:block}
-.cf{
-  position:absolute;top:-10px;
-  animation:cffall linear infinite;
-  border-radius:2px;
-}
-@keyframes cffall{
-  0%{transform:translateY(-10px) rotate(0);opacity:1}
-  100%{transform:translateY(110vh) rotate(720deg);opacity:.3}
-}
+/* CONFETTI */
+.cfwrap{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:200;display:none}
+.cfwrap.on{display:block}
+.cf{position:absolute;top:-10px;border-radius:2px;animation:cffall linear infinite}
+@keyframes cffall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+.end-wrap{text-align:center;padding:44px 20px}
 </style>
 </head>
 <body>
 
-<!-- Floating particles -->
-<div class="ptcl" style="left:4%;font-size:18px;animation-duration:8s;animation-delay:0s">✨</div>
-<div class="ptcl" style="left:12%;font-size:12px;animation-duration:11s;animation-delay:2s">⭐</div>
-<div class="ptcl" style="left:22%;font-size:22px;animation-duration:9s;animation-delay:1s">💫</div>
-<div class="ptcl" style="left:35%;font-size:14px;animation-duration:13s;animation-delay:3.5s">🌟</div>
-<div class="ptcl" style="left:48%;font-size:18px;animation-duration:7s;animation-delay:1.5s">✨</div>
-<div class="ptcl" style="left:60%;font-size:12px;animation-duration:10s;animation-delay:4s">⭐</div>
-<div class="ptcl" style="left:72%;font-size:20px;animation-duration:8s;animation-delay:.5s">💫</div>
-<div class="ptcl" style="left:83%;font-size:14px;animation-duration:12s;animation-delay:2.5s">🌟</div>
-<div class="ptcl" style="left:93%;font-size:16px;animation-duration:9s;animation-delay:0s">✨</div>
+<div class="ptcl" style="left:4%;font-size:17px;animation-duration:8s;animation-delay:0s">✨</div>
+<div class="ptcl" style="left:13%;font-size:12px;animation-duration:11s;animation-delay:2s">⭐</div>
+<div class="ptcl" style="left:24%;font-size:20px;animation-duration:9s;animation-delay:1s">💫</div>
+<div class="ptcl" style="left:37%;font-size:13px;animation-duration:13s;animation-delay:3.5s">🌟</div>
+<div class="ptcl" style="left:50%;font-size:17px;animation-duration:7s;animation-delay:1.5s">✨</div>
+<div class="ptcl" style="left:62%;font-size:12px;animation-duration:10s;animation-delay:4s">⭐</div>
+<div class="ptcl" style="left:74%;font-size:18px;animation-duration:8s;animation-delay:.5s">💫</div>
+<div class="ptcl" style="left:85%;font-size:13px;animation-duration:12s;animation-delay:2.5s">🌟</div>
+<div class="ptcl" style="left:94%;font-size:15px;animation-duration:9s;animation-delay:.8s">✨</div>
 
-<!-- Confetti container -->
-<div class="confetti-wrap" id="confetti"></div>
+<div class="cfwrap" id="cf"></div>
 
 <div class="wrap">
 
-<!-- ====== S0: AÇILIŞ ====== -->
+<!-- S0: AÇILIŞ -->
 <div class="sc on" id="s0">
   <div class="hero">
-    <span class="big-emoji">🎊</span>
-    <div class="hero-title">TEBRİKLER!</div>
-    <div class="hero-sub">Sana bir hayat atandı.</div>
-    <div class="hero-note">Türkiye 2026 · Haziran · Senaryo deneyimi</div>
+    <span class="big-e">🌧️</span>
+    <div class="hero-title"><span data-tip="her şeyin kötüye gittiğine dair kabullenme hali. bilgi var, eylem yok. internet kültüründe depresif ama içten bir tutum.">doomer core</span>.</div>
+    <div class="hero-sub">Biliyorsun. Uyanmıyorsun. Zaten uyanıksın.</div>
+    <div class="hero-note">Türkiye 2026 · Haziran</div>
   </div>
-  <div class="intro-box">
-    <p>Aşağıdaki <strong>5 hayat paketinden</strong> biri sana atandı.<br>
-    Hepsi geçerli. Hepsi makul. Hepsi seni götürdükleri yere götürecek.<br>
+  <div class="box">
+    <p>Herkes bir şekilde biliyor. Ama bilmek tek başına bir yere varmıyor.<br>Bu, 5 farklı <strong>"bilmek ama devam etmek"</strong> biçimi.<br>Bunlardan biri şu an senin durumun.<br>
     <span style="font-size:12px;color:var(--textx)">(Bu bir seçim değil. Bir tespit.)</span></p>
   </div>
   <button class="btn btn-pink" onclick="go('s1')">Paketleri Gör ✨</button>
 </div>
 
-<!-- ====== S1: 5 PAKET ====== -->
+<!-- S1: 5 PAKET -->
 <div class="sc" id="s1">
+  <div class="lbl-sm" style="margin-bottom:18px">mevcut hayat paketleri™ · türkiye 2026</div>
 
-  <div style="text-align:center;margin-bottom:24px">
-    <div style="font-size:11px;letter-spacing:3px;color:var(--textx);text-transform:uppercase;margin-bottom:8px">mevcut hayat paketleri™</div>
-    <div style="font-size:14px;color:var(--texts)">Türkiye 2026 için geçerli · Stok sınırsız</div>
-  </div>
-
-  <!-- 1: ŞÜKREDEN FATALİST -->
   <div class="pkg-card">
     <div class="pkg-top" style="--c1:#FFB3C1;--c2:#FF6B9D">
-      <span class="pkg-icon-big">🕊️</span>
-      <div class="pkg-top-info">
-        <div class="pkg-badge">😇 MANEVİ WELLBEING™</div>
+      <span class="pkg-icon">🕊️</span>
+      <div><div class="pkg-badge">😇 manevi wellbeing™</div>
         <div class="pkg-name">Şükreden Fatalist</div>
-        <div class="pkg-sub">Allah ne verdiyse, o kadar. Maşallah.</div>
-      </div>
+        <div class="pkg-sub">Allah ne verdiyse, o kadar. Maşallah.</div></div>
     </div>
     <div class="pkg-body">
-      <p class="pkg-desc">Ne olursa olsun ruhun huzurlu. Kötü şeyler olduğunda "Allah'ın bir hikmeti vardır" dersin. Hayal kırıklığı hissetmiyorsun çünkü beklentin yok. Sistemin değişmesi gerekmiyor — senin bakış açın değişiyor. Bu bir güç. Bu bir lütuf. Buna da şükür.</p>
-      <div class="stat-row"><span class="stat-lbl">GÜNLÜK HUZUR</span><div class="stat-bar"><div class="stat-fill" style="width:92%;background:linear-gradient(90deg,#FFB3C1,#FF6B9D)"></div></div><span class="stat-emoji">😌</span></div>
-      <div class="stat-row"><span class="stat-lbl">ÖFKE SEVİYESİ</span><div class="stat-bar"><div class="stat-fill" style="width:4%;background:#ddd"></div></div><span class="stat-emoji">🌸</span></div>
-      <div class="stat-row"><span class="stat-lbl">DEĞİŞİM ÇABASI</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#ddd"></div></div><span class="stat-emoji">🍃</span></div>
-      <div class="pkg-tags">
-        <span class="ptag">✅ Öfkeye karşı koruma</span>
-        <span class="ptag">✅ Günlük huzur garantili</span>
-        <span class="ptag">✅ Hayal kırıklığı riski sıfır</span>
-      </div>
-      <div class="pkg-review">"Çok güzel paket. Hiçbir şey beklememek çok rahatlatıcı." <span class="stars">★★★★★</span></div>
+      <p class="pkg-desc">Ne olursa olsun ruhun huzurlu. Kötü şeyler olduğunda "Allah'ın bir hikmeti vardır" dersin. Beklentin olmadığı için hayal kırıklığın da yok. Sistemin değişmesi gerekmiyor — senin bakış açın değişiyor. Bu bir güç. Buna da şükür.</p>
+      <div class="stat-row"><span class="stat-lbl">GÜNLÜK HUZUR</span><div class="stat-bar"><div class="stat-fill" style="width:92%;background:linear-gradient(90deg,#FFB3C1,#FF6B9D)"></div></div><span class="stat-e">😌</span></div>
+      <div class="stat-row"><span class="stat-lbl">ÖFKE SEVİYESİ</span><div class="stat-bar"><div class="stat-fill" style="width:3%;background:#ddd"></div></div><span class="stat-e">🌸</span></div>
+      <div class="stat-row"><span class="stat-lbl">DEĞİŞİM ÇABASI</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#ddd"></div></div><span class="stat-e">🍃</span></div>
+      <div class="pkg-tags"><span class="ptag">✅ Hayal kırıklığı riski sıfır</span><span class="ptag">✅ İçsel huzur pakette dahil</span><span class="ptag">✅ Günlük sükunet garantili</span></div>
+      <div class="pkg-review">"Hiçbir şey beklememek çok rahatlatıcı." <span class="stars">★★★★★</span></div>
     </div>
   </div>
 
-  <!-- 2: COĞRAFYA DETERMİNİSTİ -->
   <div class="pkg-card">
     <div class="pkg-top" style="--c1:#B5EAD7;--c2:#00B894">
-      <span class="pkg-icon-big">🗺️</span>
-      <div class="pkg-top-info">
-        <div class="pkg-badge">🧠 RASYONEL HAYATTA KALMA™</div>
+      <span class="pkg-icon">🗺️</span>
+      <div><div class="pkg-badge">🧠 rasyonel hayatta kalma™</div>
         <div class="pkg-name">Coğrafya Deterministi</div>
-        <div class="pkg-sub">Bu topraklarda böyle olur. Sen bilirsin.</div>
-      </div>
+        <div class="pkg-sub">Bu topraklarda böyle olur. Sen bilirsin.</div></div>
     </div>
     <div class="pkg-body">
-      <p class="pkg-desc">Apolitik kalmak survival stratejisi. Siyasete karışmak enerjini tüketir, seni hedef yapar. Sen kaçındıkça kazanıyorsun. Bu zayıflık değil — bu bölgenin gerçekçi okuması. Akıllıca sinizm. Cynical çevreler tarafından saygı görüyorsun.</p>
-      <div class="stat-row"><span class="stat-lbl">RADAR ALTI KALMA</span><div class="stat-bar"><div class="stat-fill" style="width:95%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-emoji">👻</span></div>
-      <div class="stat-row"><span class="stat-lbl">ENERJİ TASARRUFU</span><div class="stat-bar"><div class="stat-fill" style="width:88%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-emoji">🔋</span></div>
-      <div class="stat-row"><span class="stat-lbl">ÜMİT BARINDIRMA</span><div class="stat-bar"><div class="stat-fill" style="width:7%;background:#ddd"></div></div><span class="stat-emoji">🌵</span></div>
-      <div class="pkg-tags">
-        <span class="ptag">✅ Kimsenin hedefi değilsin</span>
-        <span class="ptag">✅ Enerji tasarrufu</span>
-        <span class="ptag">✅ "Ben zaten biliyordum" hakkı</span>
-      </div>
-      <div class="pkg-review">"Apolitik olmak benim için özgürlük. Seçimlerden etkilenmiyorum artık." <span class="stars">★★★★★</span></div>
+      <p class="pkg-desc">Apolitik kalmak bir <span data-tip="hayatta kalmayı optimize etmek — sistemle çatışmadan çekilmek">survival stratejisi</span>. Siyasete karışmak enerji tüketir, hedef olursun. Sen kaçındıkça kazanıyorsun. Bu zayıflık değil — bu bölgenin gerçekçi okuması. Akıllıca sinizm.</p>
+      <div class="stat-row"><span class="stat-lbl">RADAR ALTI KALMA</span><div class="stat-bar"><div class="stat-fill" style="width:95%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-e">👻</span></div>
+      <div class="stat-row"><span class="stat-lbl">ENERJİ TASARRUFU</span><div class="stat-bar"><div class="stat-fill" style="width:87%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-e">🔋</span></div>
+      <div class="stat-row"><span class="stat-lbl">ÜMİT BARINDIRMA</span><div class="stat-bar"><div class="stat-fill" style="width:5%;background:#ddd"></div></div><span class="stat-e">🌵</span></div>
+      <div class="pkg-tags"><span class="ptag">✅ Kimsenin hedefi değilsin</span><span class="ptag">✅ "Ben zaten biliyordum" hakkı</span><span class="ptag">✅ Enerji tasarrufu</span></div>
+      <div class="pkg-review">"Apolitik olmak benim için özgürlük." <span class="stars">★★★★★</span></div>
     </div>
   </div>
 
-  <!-- 3: YORULMUŞ İDEALİST -->
   <div class="pkg-card">
     <div class="pkg-top" style="--c1:#C7CEEA;--c2:#6C5CE7">
-      <span class="pkg-icon-big">🕯️</span>
-      <div class="pkg-top-info">
-        <div class="pkg-badge">💎 KLASİK VİNTAGE™</div>
+      <span class="pkg-icon">🕯️</span>
+      <div><div class="pkg-badge">💎 klasik vintage™</div>
         <div class="pkg-name">Yorulmuş İdealist</div>
-        <div class="pkg-sub">Söylüyor. Hâlâ. Devam ediyor.</div>
-      </div>
+        <div class="pkg-sub">Söylüyor. Hâlâ. Devam ediyor.</div></div>
     </div>
     <div class="pkg-body">
-      <p class="pkg-desc">Hâlâ inanıyorsun. Hâlâ söylüyorsun. Bir şeyler değişir diye hâlâ bekliyorsun. Hayal kırıklıkları seni olgunlaştırıyor. Her "zaten böyle olacaktı" ile daha bilge, daha deneyimli, daha yorgun oluyorsun. Bu bir karakter gelişimi. Çok spesifik bir karakter.</p>
-      <div class="stat-row"><span class="stat-lbl">SÖYLEMSELLİK</span><div class="stat-bar"><div class="stat-fill" style="width:91%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-emoji">📣</span></div>
-      <div class="stat-row"><span class="stat-lbl">SOMUT ADIM</span><div class="stat-bar"><div class="stat-fill" style="width:9%;background:#ddd"></div></div><span class="stat-emoji">🌀</span></div>
-      <div class="stat-row"><span class="stat-lbl">YORGUNLUKTAKİ ZARAFET</span><div class="stat-bar"><div class="stat-fill" style="width:85%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-emoji">😮‍💨</span></div>
-      <div class="pkg-tags">
-        <span class="ptag">✅ Moral yüksekliği</span>
-        <span class="ptag">✅ "Çok şey yaşamış" havası</span>
-        <span class="ptag">✅ Twitter'da anlamlı thread hakkı</span>
-      </div>
-      <div class="pkg-review">"Değişmeyeceğini bilmek aslında çok özgürleştirici." <span class="stars">★★★★★</span></div>
+      <p class="pkg-desc">Hâlâ inanıyorsun. Hâlâ söylüyorsun. Hayal kırıklıkları seni olgunlaştırıyor. Her "zaten böyle olacaktı" ile daha bilge, daha deneyimli, daha yorgun oluyorsun. Bu karakter gelişimi. Çok spesifik bir karakter.</p>
+      <div class="stat-row"><span class="stat-lbl">SÖYLEMSELLİK</span><div class="stat-bar"><div class="stat-fill" style="width:90%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-e">📣</span></div>
+      <div class="stat-row"><span class="stat-lbl">SOMUT ADIM</span><div class="stat-bar"><div class="stat-fill" style="width:7%;background:#ddd"></div></div><span class="stat-e">🌀</span></div>
+      <div class="stat-row"><span class="stat-lbl">YILGININ ZARAFETİ</span><div class="stat-bar"><div class="stat-fill" style="width:84%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-e">😮‍💨</span></div>
+      <div class="pkg-tags"><span class="ptag">✅ Moral yüksekliği garantili</span><span class="ptag">✅ "Çok şey yaşamış" havası</span><span class="ptag">✅ Thread açma hakkı</span></div>
+      <div class="pkg-review">"Değişmeyeceğini bilmek aslında özgürleştirici." <span class="stars">★★★★★</span></div>
     </div>
   </div>
 
-  <!-- 4: SİSTEM SUÇLAYICI -->
   <div class="pkg-card">
     <div class="pkg-top" style="--c1:#FFDAC1;--c2:#E17055">
-      <span class="pkg-icon-big">⚙️</span>
-      <div class="pkg-top-info">
-        <div class="pkg-badge">🎓 AYDINLANMIŞ™</div>
+      <span class="pkg-icon">⚙️</span>
+      <div><div class="pkg-badge">🎓 aydınlanmış™</div>
         <div class="pkg-name">Sistem Suçlayıcı</div>
-        <div class="pkg-sub">Asıl sorun kapitalizm. Başka soru yok.</div>
-      </div>
+        <div class="pkg-sub">Asıl sorun kapitalizm. Başka soru yok.</div></div>
     </div>
     <div class="pkg-body">
-      <p class="pkg-desc">Her şeyin köküne iniyorsun: kapitalizm, emperyalizm, finans kapital, hegemonya. Spesifik çözüm üretmek zorunda değilsin — çünkü asıl sorun sistem. Her tartışmayı kazanıyorsun. Hiçbir şeyi çözmek zorunda değilsin. Makro perspektif = sorumluluktan muafiyet.</p>
-      <div class="stat-row"><span class="stat-lbl">MAKRO ANALİZ</span><div class="stat-bar"><div class="stat-fill" style="width:97%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-emoji">🔭</span></div>
-      <div class="stat-row"><span class="stat-lbl">SPESİFİK ÇÖZÜM</span><div class="stat-bar"><div class="stat-fill" style="width:3%;background:#ddd"></div></div><span class="stat-emoji">🚫</span></div>
-      <div class="stat-row"><span class="stat-lbl">TARTIŞMA GALİBİYETİ</span><div class="stat-bar"><div class="stat-fill" style="width:99%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-emoji">🏆</span></div>
-      <div class="pkg-tags">
-        <span class="ptag">✅ Her tartışmayı kazanırsın</span>
-        <span class="ptag">✅ Hiçbir şeyi çözmek zorunda değilsin</span>
-        <span class="ptag">✅ Entelektüel kimlik pakette dahil</span>
-      </div>
+      <p class="pkg-desc">Her şeyin köküne iniyorsun: kapitalizm, emperyalizm, finans kapital. Spesifik çözüm üretmek zorunda değilsin — asıl sorun sistem. <span data-tip="büyük resme odaklanmak, küçük adımları reddetmek — doğru teşhis, işlevsiz sonuç">Makro perspektif</span> = sorumluluktan muafiyet. Her tartışmayı kazanıyorsun.</p>
+      <div class="stat-row"><span class="stat-lbl">MAKRO ANALİZ</span><div class="stat-bar"><div class="stat-fill" style="width:97%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-e">🔭</span></div>
+      <div class="stat-row"><span class="stat-lbl">SPESİFİK ÇÖZÜM</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#ddd"></div></div><span class="stat-e">🚫</span></div>
+      <div class="stat-row"><span class="stat-lbl">TARTIŞMA GALİBİYETİ</span><div class="stat-bar"><div class="stat-fill" style="width:99%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-e">🏆</span></div>
+      <div class="pkg-tags"><span class="ptag">✅ Her tartışmayı kazanırsın</span><span class="ptag">✅ Hiçbir şeyi çözmek zorunda değilsin</span><span class="ptag">✅ Entelektüel kimlik</span></div>
       <div class="pkg-review">"Sorun sistemse çözüm de sistemsel. Başka soru yok." <span class="stars">★★★★★</span></div>
     </div>
   </div>
 
-  <!-- 5: VATAN KORUYUCUSU -->
+  <!-- 5: UPDATED — Repütasyoncu Kemalist -->
   <div class="pkg-card">
-    <div class="pkg-top" style="--c1:#FFF4CC;--c2:#FDCB6E">
-      <span class="pkg-icon-big">🦅</span>
-      <div class="pkg-top-info">
-        <div class="pkg-badge" style="color:#555">🇹🇷 EPİK™</div>
-        <div class="pkg-name" style="color:#555">Vatan Koruyucusu</div>
-        <div class="pkg-sub" style="color:#777">Bu millet uyumaz. Atatürk izler.</div>
-      </div>
+    <div class="pkg-top" style="--c1:#D6EAF8;--c2:#2E86C1">
+      <span class="pkg-icon">🏛️</span>
+      <div><div class="pkg-badge" style="color:#fff">🎖️ değerler koruyucusu™</div>
+        <div class="pkg-name" style="color:#fff">Repütasyoncu Kemalist</div>
+        <div class="pkg-sub" style="color:rgba(255,255,255,.85)">"O partiye ihanet ettiler."</div></div>
     </div>
     <div class="pkg-body">
-      <p class="pkg-desc">Türk genci ayağa kalkar. Bayrak inmez. Tarih boyunca nice badireler atlattık. Bu da geçer. Hayal dünyasında yaşıyorsun ama bu hayal seni ayakta tutuyor. Ve ayakta kalmak önemli. Tarihsel sürekliliğin içindesin. Büyük bir parçasısın.</p>
-      <div class="stat-row"><span class="stat-lbl">MOTIVASYON</span><div class="stat-bar"><div class="stat-fill" style="width:96%;background:linear-gradient(90deg,#FFF4CC,#FDCB6E)"></div></div><span class="stat-emoji">🔥</span></div>
-      <div class="stat-row"><span class="stat-lbl">GERÇEK TEMAS</span><div class="stat-bar"><div class="stat-fill" style="width:5%;background:#ddd"></div></div><span class="stat-emoji">🌫️</span></div>
-      <div class="stat-row"><span class="stat-lbl">KÖTÜ HABERE BAĞIŞIKLIK</span><div class="stat-bar"><div class="stat-fill" style="width:94%;background:linear-gradient(90deg,#FFF4CC,#FDCB6E)"></div></div><span class="stat-emoji">🛡️</span></div>
-      <div class="pkg-tags">
-        <span class="ptag">✅ Sarsılmaz motivasyon</span>
-        <span class="ptag">✅ Tarihin doğru tarafında olmak</span>
-        <span class="ptag">✅ Kötü haberlere karşı bağışıklık</span>
-      </div>
-      <div class="pkg-review">"Bu vatan elden gitmez. Gitmedi. Gitmeyecek." <span class="stars">★★★★★</span></div>
+      <p class="pkg-desc">Atatürk'e gerçek bir bağlılık var. Ama bu bağlılık bugünkü siyaseti analiz etmeyi değil, kimin ne kadar Kemalist <em>göründüğünü</em> izlemeyi önceliklendiriyor. "CHP Mustafa Kemal'in değerlerine ihanet etti" narratifi sabit. <span data-tip="itibarı ve sembolik doğruluğu somut sonuçların önünde tutma eğilimi — kim ne kadar doğru görünüyor?">Repütasyonculuk</span> önceliyor. "Biz neyiz" sorusu, "ne yapmalıyız" sorusunun önüne geçiyor.</p>
+      <div class="stat-row"><span class="stat-lbl">TARİHİ KİMLİK</span><div class="stat-bar"><div class="stat-fill" style="width:93%;background:linear-gradient(90deg,#D6EAF8,#2E86C1)"></div></div><span class="stat-e">📜</span></div>
+      <div class="stat-row"><span class="stat-lbl">BUGÜNÜ OKUMA</span><div class="stat-bar"><div class="stat-fill" style="width:10%;background:#ddd"></div></div><span class="stat-e">🌫️</span></div>
+      <div class="stat-row"><span class="stat-lbl">REPÜTASYON KAYGISI</span><div class="stat-bar"><div class="stat-fill" style="width:95%;background:linear-gradient(90deg,#D6EAF8,#2E86C1)"></div></div><span class="stat-e">👁️</span></div>
+      <div class="pkg-tags"><span class="ptag">✅ Güçlü tarihi kimlik</span><span class="ptag">✅ "Aslında" deme hakkı her tartışmada</span><span class="ptag">✅ İhanet anlatısına sürekli giriş</span></div>
+      <div class="pkg-review">"Ben Kemalist'im ama bugünkü CHP'yi tanımıyorum. O değerler nerede?" <span class="stars">★★★★★</span></div>
     </div>
   </div>
 
-  <div class="div-center">· · ·</div>
-
-  <div class="sumbox">
-    <p>Bu paketlerden biri sana atandı.<br>
-    Hangisi olduğunu zaten biliyorsun.<br>
-    <span style="font-size:12px;color:var(--textx)">(Muhtemelen kendinde birden fazlası var. Hepsi aynı yere gidiyor.)</span></p>
+  <div class="div-c">· · ·</div>
+  <div class="box" style="text-align:center">
+    <p>Bu paketlerden biri sana atandı. Hangisi olduğunu zaten biliyorsun.<br>
+    <span style="font-size:12px;color:var(--textx)">(Muhtemelen ikisi. Hepsi aynı yere gidiyor.)</span></p>
   </div>
 
-  <!-- MINAKO TALISMAN -->
-  <div class="minako-talisman" id="minakoSection">
-    <span class="minako-rb">🌈</span>
-    <div style="position:relative;display:inline-block">
-      <span class="minako-emoji" onclick="startMinako()">🦄</span>
-    </div>
-    <div class="minako-bubble">
-      <div class="mname">🌈 MINAKO</div>
-      <div class="mbody">meraba ben bunea mınakoyim. üzerime binmek ister misin? seni saçmasapan biyere götürcem</div>
-      <button class="mclick" onclick="startMinako()">bin 🦄→</button>
+  <div class="minako-tal">
+    <span class="m-rb">🌈</span>
+    <div><span class="m-e" onclick="go('sm1')">🦄</span>
+    <div class="m-namelbl">Bunea Minako-Yim</div></div>
+    <div class="m-bubble">
+      <div class="mb-who">🌈 Bunea Minako-Yim</div>
+      <div class="mb-txt">meraba. üzerime binmek ister misin? seni saçmasapan biyere götürcem.</div>
+      <button class="mb-btn" onclick="go('sm1')">bin 🦄→</button>
     </div>
   </div>
-
 </div>
 
-<!-- ====== MINAKO M1: BRİEFİNG ====== -->
+<!-- SM1: BRİEFİNG -->
 <div class="sc" id="sm1">
-  <div class="m-screen">
-    <div class="m-header">
-      <span class="m-avatar">🦄</span>
-      <div>
-        <div class="m-who">mınako konuşuyor</div>
-        <div class="m-sub">güvenilirlik: orta-yüksek · saçmalık: orta</div>
-      </div>
+  <div class="m-card">
+    <div class="m-hdr">
+      <span class="m-av">🦄</span>
+      <div><div class="m-who2">Bunea Minako-Yim konuşuyor</div>
+      <div class="m-sub2">güvenilirlik: orta-yüksek · saçmalık: orta</div></div>
     </div>
-    <p class="m-text"><strong>şimdi. biliyorum.</strong></p>
-    <p class="m-text">yani durum şu:</p>
-
-    <div class="info-item" style="--ic:#FF6B9D">
-      <div class="info-head">🔴 mutlak butlan · mayıs 2026</div>
-      <div class="info-body">Ankara bölge adliye mahkemesi CHP'nin iki kurultayını yok hükmünde saydı. Kılıçdaroğlu 78 yaşında "arınma" söylemiyle geri döndü. Özgür Özel tartışmalı. İmamoğlu Silivri'de. Diploma davası ayrıca devam ediyor.</div>
+    <p class="m-p"><strong>şimdi. biliyorum.</strong></p>
+    <p class="m-p">yani durum şu:</p>
+    <div class="info-i" style="--ic:#FF6B9D">
+      <div class="info-h">🔴 mutlak butlan · mayıs 2026</div>
+      <div class="info-b">Mahkeme CHP'nin iki kurultayını yok hükmünde saydı. Kılıçdaroğlu 78 yaşında "arınma" söylemiyle geri döndü. Özgür Özel aktif direnişte — genel merkezi bırakmıyor, mitingler düzenliyor, ortalığı karıştırıyor.</div>
     </div>
-    <div class="info-item" style="--ic:#E17055">
-      <div class="info-head">🔴 devam eden tablo</div>
-      <div class="info-body">Demirtaş içeride. Kürt meselesi yönetim aracı olarak işliyor. 2028 seçimleri iki yıl uzakta. Muhalefet başsız. Ve yukarıdaki 5 paketin her biri bu tabloyu "açıklayan" kendi lore'unu söylüyor.</div>
+    <div class="info-i" style="--ic:#E17055">
+      <div class="info-h">🔴 devam eden tablo</div>
+      <div class="info-b">İmamoğlu Silivri'de. Demirtaş içeride. Kürt meselesi yönetim aracı olarak işliyor. 2028 seçimleri iki yıl uzakta. Muhalefet başsız.</div>
     </div>
-    <div class="info-item" style="--ic:#FDCB6E">
-      <div class="info-head">🟡 bu sabah sen</div>
-      <div class="info-body">ne paylaştın, ne dedin, ne izledin — hepsinin tabloyu değiştirmediğini sen de biliyorsun. 5 paketten biri ile hayatına devam edeceksin büyük ihtimalle. bu normal. çoğu insan böyle yapıyor.</div>
+    <div class="info-i" style="--ic:#FDCB6E">
+      <div class="info-h">🟡 ve sen</div>
+      <div class="info-b">ne paylaştın, ne dedin, ne izledin — hepsinin tabloyu değiştirmediğini biliyorsun. uyanmıyorsun. zaten uyanıksın. bu <span data-tip="her şeyin kötüye gittiğine dair kabullenme hali — bilgi var ama eylem yok">doomer core</span>.</div>
     </div>
-
-    <p class="m-text" style="margin-top:18px">evet. buraya kadar böyle.</p>
+    <p class="m-p" style="margin-top:12px">evet. buraya kadar böyle.</p>
   </div>
   <button class="btn btn-pink" onclick="go('sm2')">tamam ve? 👀</button>
 </div>
 
-<!-- ====== MINAKO M2: AMA ====== -->
+<!-- SM2: AMA -->
 <div class="sc" id="sm2">
-  <div class="m-screen">
-    <div class="m-header">
-      <span class="m-avatar">🦄</span>
-      <div>
-        <div class="m-who">mınako devam ediyor</div>
-        <div class="m-sub">biraz daha ciddi ama hâlâ ben</div>
-      </div>
+  <div class="m-card">
+    <div class="m-hdr">
+      <span class="m-av">🦄</span>
+      <div><div class="m-who2">Bunea Minako-Yim devam ediyor</div>
+      <div class="m-sub2">biraz daha ciddi ama hâlâ ben</div></div>
     </div>
-    <p class="m-text"><strong>ama. bi olasılık daha var.</strong></p>
-    <div style="text-align:center;margin:18px 0">
-      <div class="badge-exp">🧪 DENEYSEL · HENÜZ DENEY AŞAMASINDA · SPEKÜLATİF</div>
-    </div>
-    <p class="m-text">yani şöyle. bu bir spekülasyon. ankara kulislerinde dolaşan, nuray babacan'ın haberleştirdiği bir senaryo. resmi değil. kesin değil.</p>
-    <div class="m-aside">not: "kulislerde dolaşıyor" = gerçek olduğu anlamına gelmez. "spekülasyon" = imkansız anlamına da gelmez. aradaki bir yerde. ilginç çünkü yukarıdaki 5 paketin hiçbirinin üretemeyeceği türden bir düşünce bu. şükreden fatalist beklemez. coğrafya deterministi "bu topraklarda olmaz" der. yorulmuş idealist "hepsi palavra" der. sistem suçlayıcı "kapitalizmi aklamak" der. vatan koruyucusu zaten her şey tamam der. ama hiçbirinin spesifik bir matematik üretmesi gerekmiyor ki.</div>
-    <p class="m-text">gitmek ister misin?</p>
-    <p class="m-text" style="font-size:13px;color:var(--textx)">uyarı: saçmasapan biyere götüreceğimi söylemiştim. bu o yer. ama dürüst diyorum — bence değer.</p>
+    <p class="m-p"><strong>ama. bi olasılık daha var.</strong></p>
+    <div style="text-align:center;margin:14px 0"><div class="badge-exp">🧪 deneysel · spekülatif · henüz olmamış</div></div>
+    <p class="m-p">ankara kulislerinde dolaşan bir senaryo. resmi değil. ama önemli bir farkı var: <span data-tip="yukarıdaki 5 tutumun hiçbirinin üretemeyeceği türden bir düşünce — spesifik değişiklik matematiği">5 paketin hiçbiri bunu üretemez.</span></p>
+    <div class="m-aside">şükreden fatalist zaten beklemez. coğrafya deterministi "bu topraklarda olmaz" der. yorulmuş idealist "palavra" der. sistem suçlayıcı "kapitalizmi aklamak" der. repütasyoncu kemalist kimin daha çok Kemalist göründüğüne bakar. hiçbirinin spesifik bir matematik üretmesi gerekmiyor ki.</div>
+    <p class="m-p">ve asıl mesele: <strong>buna inanmak zorunda değilsin.</strong></p>
+    <p class="m-p" style="font-size:13px;color:var(--textx)">gitmek ister misin?</p>
   </div>
-  <button class="btn btn-rainbow" onclick="go('sm3')">götür beni mınako 🌈</button>
+  <button class="btn btn-rb" onclick="go('sm3')">götür beni Bunea Minako-Yim 🌈</button>
   <button class="btn btn-ghost" onclick="go('s1')">gerek yok, paketim yeterli</button>
 </div>
 
-<!-- ====== MINAKO M3: SENARYO ====== -->
+<!-- SM3: SENARYO — REFRAMED -->
 <div class="sc" id="sm3">
-  <div style="text-align:center;margin-bottom:20px">
-    <span class="minako-rb">🌈</span>
-    <span style="font-size:52px;display:inline-block;animation:minakoFloat 2.5s ease-in-out infinite">🦄</span>
-    <div style="font-size:12px;color:#C550A7;font-weight:800;margin-top:6px">mınako sunar</div>
-    <div class="badge-exp">🧪 DENEYSEL SENARYO™ · HENÜZ OLMUŞ DEĞİL</div>
+  <div style="text-align:center;margin-bottom:16px">
+    <span class="m-rb">🌈</span>
+    <span style="font-size:50px;display:inline-block;animation:mf 2.5s ease-in-out infinite">🦄</span>
+    <div style="font-size:11px;color:#C550A7;font-weight:800;margin-top:5px">Bunea Minako-Yim sunar</div>
+    <div class="badge-exp">🧪 deneysel senaryo™ · henüz olmamış</div>
   </div>
 
-  <div class="m-screen">
-    <div class="m-header">
-      <span class="m-avatar">🦄</span>
-      <div>
-        <div class="m-who">mınako açıklıyor</div>
-        <div class="m-sub">kaynak: nuray babacan / nefes · haziran 2026</div>
+  <div class="m-card">
+    <div class="m-hdr">
+      <span class="m-av">🦄</span>
+      <div><div class="m-who2">Bunea Minako-Yim açıklıyor</div>
+      <div class="m-sub2">kaynak: nuray babacan / nefes · haziran 2026</div></div>
+    </div>
+
+    <p class="m-p"><strong>tamam. önce şunu söyleyeyim:</strong></p>
+    <p class="m-p">bu senaryo muhafazakar kulislerden çıktı. biliyorum. ama bunu <em>inanmak</em> için değil, <span data-tip="başkasının kendi çıkarı için sağladığı fırsattan bedavaya yararlanmak — güven gerektirmez, çakışma noktası yeterli">free ride</span> etmek için bakacaksın.</p>
+
+    <div class="m-aside">2019 yerel seçimlerinde Demirtaş, Edirne cezaevinden şunu söyledi: <strong>"biz CHP'ye oy verin demiyoruz. faşist bloğu geriletmek için oyunuzu stratejik kullanın."</strong> HDP bazı şehirlerde aday çıkarmadı. İstanbul gitti. CHP'ye güvenmiyordu — ama o an çakışıyordu. buna <span data-tip="sonucu bile bile stratejik olarak 'tamam' demek — karşı tarafın niyetine inanmadan, çakışma noktasını kullanmak">planlı naiflik</span> diyorum.</div>
+
+    <p class="m-p">bugün DEM hükümetle tam bunu yapıyor. Kürt siyasi haklarını açacak tek fiili pencere şu an orası. inanmıyorlar. ama çakışıyor. ve 'tamam' diyorlar.</p>
+
+    <div style="height:1px;background:rgba(0,0,0,.08);margin:16px 0"></div>
+    <p class="m-p" style="font-size:13px;font-weight:700;color:var(--texts)">şimdi o senaryo:</p>
+
+    <div class="sc-i">
+      <div class="sc-h">📜 güçlendirilmiş parlamenter sistem</div>
+      <div class="sc-b">Anayasa değişikliği. Erdoğan bir dönem yetkisiz-sembolik cumhurbaşkanı. "Onurlu çıkış." Ailesi korunuyor. Kani Torun'un meclis kürsüsünde konuştuğu, iktidar dahil kulislerde analiz edilen senaryo.</div>
+    </div>
+    <div class="sc-i">
+      <div class="sc-h">✅ eş zamanlı serbest bırakmalar</div>
+      <div class="sc-b">İmamoğlu, Demirtaş, diğer siyasi tutuklular. Anayasa değişikliği aşamasında gerçekleşiyor. İmamoğlu başbakan adayı olabiliyor.</div>
+    </div>
+    <div class="sc-i">
+      <div class="sc-h">🗳️ rekabetçi 2028</div>
+      <div class="sc-b">İmamoğlu-Özel ikilisi seçime giriyor. Demirtaş DEM'i daha geniş tabanlı bir yapıya dönüştürüyor. Kürt siyasi haklarında somut adımlar.</div>
+    </div>
+    <div class="sc-i warn">
+      <div class="sc-h">⚠️ caveat — ve neden sorun değil</div>
+      <div class="sc-b">Muhafazakarlar kendi <span data-tip="yumuşak iniş — hesapsız, hasarsız geçiş">soft landing</span>'ini istiyor. Hesap yok, Erdoğan ailesi korunuyor. Ama bu tam da <span data-tip="başkasının fırsatından bedavaya yararlanmak">free ride</span>'ın zemini. <strong>onların niyetine inanmak zorunda değilsin — çakışma noktasını kullanmak zorundasın.</strong></div>
+    </div>
+
+    <div style="height:1px;background:rgba(0,0,0,.08);margin:16px 0"></div>
+    <p class="m-p" style="font-size:13px;font-weight:700;color:var(--texts)">ve <span data-tip="makro düzeyde değişen siyasi zemin — fırsat penceresi">zemin</span>:</p>
+    <div class="info-i" style="--ic:#6C5CE7">
+      <div class="info-b">Trump non-consequentialist otoriteryenizmi bütün kartlarını oynadı ve tıkandı. Meloni bile "yeter" diyor. Amerika İsrail'e "yeter" diyor. AfD/Brexit momentumu hâlâ var ama makro eğilimde bir kırılma var. Bu kırılma olmadan AKP'nin 'geçiş' hesabı yapması mümkün değildi. <strong>zemin olmadan senaryo mümkün değildi.</strong></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(232,195,255,.25),rgba(174,214,241,.25));border-radius:13px;padding:15px;margin-top:13px">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px">
+        <span style="font-size:22px">🦄</span>
+        <span style="font-size:11px;color:#C550A7;font-weight:800">Bunea Minako-Yim'in özeti</span>
       </div>
-    </div>
-    <p class="m-text"><strong>tamam.</strong></p>
-    <p class="m-text">her istediğin olmicak. bu senaryo adil değil. mükemmel değil. bir şeylere göz yumuluyor.</p>
-    <p class="m-text">ama bence hem bugüne göre daha umut verici, hem de aslında daha az hayalperest. daha realist. en azından ben öyle düşünüyorum.</p>
-
-    <div style="height:1px;background:rgba(0,0,0,.08);margin:20px 0"></div>
-
-    <div class="sc-item">
-      <div class="sc-head">📜 anayasa değişikliği</div>
-      <div class="sc-body">Güçlendirilmiş parlamenter sisteme geçiş. Kani Torun'un meclis kürsüsünden ana hatlarını söylediği öneri. İktidar partisi dahil dirsek teması yapılmış.</div>
-    </div>
-    <div class="sc-item">
-      <div class="sc-head">👤 erdoğan: sembolik kalıyor</div>
-      <div class="sc-body">Bir dönem yetkisiz-sembolik cumhurbaşkanı olarak kalmasına izin veriliyor. "Onurlu bir veda." Ailesi ve yakın çevresi koruma altına alınıyor.</div>
-    </div>
-    <div class="sc-item">
-      <div class="sc-head">✅ eş zamanlı serbest bırakmalar</div>
-      <div class="sc-body">Anayasa değişikliği aşamasında: İmamoğlu, Demirtaş ve diğer siyasi tutuklular serbest. İmamoğlu diploma sorunu kalmadığı için başbakan olabiliyor.</div>
-    </div>
-    <div class="sc-item">
-      <div class="sc-head">🗳️ rekabetçi seçim</div>
-      <div class="sc-body">İmamoğlu-Özel ikilisinin partisi tek başına %45'i aşıyor. Demirtaş DEM'in başına geçiyor ve Türkiye Partisi'ne dönüşmesinin altyapısını oluşturuyor.</div>
-    </div>
-    <div class="sc-item warn">
-      <div class="sc-head">⚠️ caveat — önemli</div>
-      <div class="sc-body">Bu senaryoyu savunanlar muhafazakar mahalleye daha yakın. "Muhafazakarları az hasarla kurtarma planı da denebilir." Yolsuzlukların hesabı Erdoğan ailesi korunarak soruluyor. Adalet değil — geçiş. Adil değil — ama efektif.</div>
-    </div>
-
-    <div style="height:1px;background:rgba(0,0,0,.08);margin:20px 0"></div>
-
-    <div style="background:linear-gradient(135deg,rgba(232,195,255,.25),rgba(174,214,241,.25));border-radius:16px;padding:18px;margin-top:4px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-        <span style="font-size:24px">🦄</span>
-        <span style="font-size:12px;color:#C550A7;font-weight:800">mınako'nun notu</span>
-      </div>
-      <p style="font-size:13px;color:var(--texts);line-height:1.8">İspanya'da Juan Carlos kaldı. Demokrasi de geldi. İkisi aynı anda mümkündü. Arjantin'de hesaplaşma oldu ama geçiş daha sancılı oldu. Hangisi Türkiye için? bilmiyorum. ama bu soruyu sorabilmek için önce spekülasyona bakmak lazım. ve spekülasyona bakabilmek için yukarıdaki 5 paketten birinin içinde sıkışıp kalmamak lazım.</p>
+      <p style="font-size:13px;color:var(--texts);line-height:1.85">tamam, her istediğin olmicak. adil değil. mükemmel değil. ama bugüne göre daha umut verici — ve daha az hayalperest. daha realist. onların ne istediğini öğren, senin minimumlarınla nerede çakışıyor bak, 'ha tamam ok olur' de. <span data-tip="yere inmek, gerçeklikle temasa geçmek — level playing field'e ulaşmak">touching the grass</span> bu. oraya geldikten sonra gerçek progressivizm <span data-tip="gizlenmiş, kamufle edilmiş — açık değil ama içeriden işleyen">in disguise</span> çalışmaya başlar.</p>
     </div>
   </div>
 
-  <button class="btn btn-mint" onclick="endGame()">tamam mınako, teşekkürler 🌈</button>
+  <button class="btn btn-mint" onclick="endGame()">tamam Bunea Minako-Yim, teşekkürler 🌈</button>
 </div>
 
-<!-- ====== BİTİŞ ====== -->
+<!-- BİTİŞ -->
 <div class="sc" id="send">
   <div class="end-wrap">
-    <span class="end-big">🦄</span>
-    <div class="end-title rbtext">iyi yolculuklar</div>
-    <p class="end-sub">
-      hangi pakette olursan ol,<br>
-      en azından artık biliyorsun.<br>
-      ve bilmek, bir şey.
-    </p>
-    <button class="btn btn-ghost" onclick="restart()" style="max-width:220px;margin:0 auto">↺ baştan başla</button>
+    <span style="font-size:78px;display:inline-block;animation:bb 1.2s ease-in-out infinite;margin-bottom:12px">🦄</span>
+    <div style="font-size:24px;font-weight:900;margin-bottom:8px" class="rb-text">iyi yolculuklar</div>
+    <p style="font-size:15px;color:var(--texts);line-height:1.9;margin-bottom:22px">hangi pakette olursan ol,<br>en azından artık biliyorsun.<br>ve bilmek, bir şey.</p>
+    <button class="btn btn-ghost" onclick="restart()" style="max-width:210px;margin:0 auto">↺ baştan başla</button>
   </div>
 </div>
 
-</div><!-- /wrap -->
+</div>
 
 <script>
-// Particles randomize
-document.querySelectorAll('.ptcl').forEach(el => {
-  const emojis = ['✨','⭐','💫','🌟','🎀','🌸','🦋','🌈'];
-  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+document.querySelectorAll('.ptcl').forEach(el=>{
+  const e=['✨','⭐','💫','🌟','🎀','🌸','🦋','🌈'];
+  el.textContent=e[Math.floor(Math.random()*e.length)];
 });
-
-function go(id) {
-  document.querySelectorAll('.sc').forEach(s => s.classList.remove('on'));
+function go(id){
+  document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function startMinako() { go('sm1'); }
-
-function endGame() {
+function endGame(){
   go('send');
-  launchConfetti();
-}
-
-function restart() {
-  document.getElementById('confetti').classList.remove('show');
-  document.getElementById('confetti').innerHTML = '';
-  go('s0');
-}
-
-function launchConfetti() {
-  const wrap = document.getElementById('confetti');
-  wrap.innerHTML = '';
-  wrap.classList.add('show');
-  const colors = ['#FFB3C1','#B5EAD7','#C7CEEA','#FFDAC1','#F9F3CC','#AED6F1','#E8C3FF','#FF6B9D'];
-  for (let i = 0; i < 50; i++) {
-    const el = document.createElement('div');
-    el.className = 'cf';
-    el.style.cssText = `
-      left:${Math.random() * 100}%;
-      width:${6 + Math.random() * 8}px;
-      height:${6 + Math.random() * 8}px;
-      background:${colors[Math.floor(Math.random() * colors.length)]};
-      animation-duration:${3 + Math.random() * 3}s;
-      animation-delay:${Math.random() * 2}s;
-      border-radius:${Math.random() > .5 ? '50%' : '2px'};
-    `;
-    wrap.appendChild(el);
+  const w=document.getElementById('cf');w.innerHTML='';w.classList.add('on');
+  const c=['#FFB3C1','#B5EAD7','#C7CEEA','#FFDAC1','#F9F3CC','#AED6F1','#E8C3FF','#FF6B9D'];
+  for(let i=0;i<50;i++){
+    const el=document.createElement('div');el.className='cf';
+    el.style.cssText=`left:${Math.random()*100}%;width:${5+Math.random()*8}px;height:${5+Math.random()*8}px;background:${c[Math.floor(Math.random()*c.length)]};animation-duration:${2.5+Math.random()*3}s;animation-delay:${Math.random()*1.5}s;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    w.appendChild(el);
   }
-  setTimeout(() => {
-    wrap.classList.remove('show');
-    wrap.innerHTML = '';
-  }, 6000);
+  setTimeout(()=>{w.classList.remove('on');w.innerHTML=''},6000);
+}
+function restart(){
+  document.getElementById('cf').classList.remove('on');
+  document.getElementById('cf').innerHTML='';
+  go('s0');
 }
 </script>
 </body>
