@@ -5,594 +5,573 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bunea Minako-Yim 🌈</title>
 <meta property="og:title" content="Bunea Minako-Yim 🌈 · Türkiye 2026">
-<meta property="og:description" content="5 hayat paketi, doomer core, ve Bunea Minako-Yim. Türkiye 2026 senaryo oyunu.">
 <meta property="og:image" content="https://berkketenci.github.io/sultanin-kilicbaligi-against-imam-very-special/preview.png">
 <meta property="og:url" content="https://berkketenci.github.io/sultanin-kilicbaligi-against-imam-very-special">
-<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://berkketenci.github.io/sultanin-kilicbaligi-against-imam-very-special/preview.png">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --text:#3a3a3a;--texts:#666;--textx:#aaa;
-  --white:rgba(255,255,255,0.9);--r:20px;
-  --neon:#00e5cc;--neon2:#7b2fff;--dark:#07071a;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:Times,"Times New Roman",serif;overflow-x:hidden}
+:root{--dark:#07071a;--neon:#00e5cc;--red:#BB0000;--gold:#FFD700;--r:14px}
 
-/* ========== BLADE RUNNER WORLD ========== */
-.br-world{
-  min-height:100vh;background:var(--dark);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  position:relative;overflow:hidden;padding:40px 24px;
-  font-family:'Courier New',monospace;
+/* ── BANNER ─────────────────────────────── */
+#banner{
+  position:fixed;top:0;left:0;right:0;height:110px;z-index:9999;
+  background:#CC0000;border-bottom:3px solid #FFD700;
+  display:none;align-items:center;justify-content:center;text-align:center;
 }
-.br-world::before{
+#banner.show{display:flex}
+#banner button{
+  background:none;border:none;color:#FFD700;
+  font-family:Times,"Times New Roman",serif;
+  font-size:28px;font-weight:900;cursor:pointer;line-height:1.3;
+}
+#banner button:hover{text-decoration:underline}
+
+/* ── UNICORN BOT ────────────────────────── */
+
+#unicorn.show{display:flex}
+
+
+
+
+
+
+/* ── BLADE RUNNER WORLD ─────────────────── */
+#br-world{display:block}
+.br-wrap{
+  min-height:100vh;background:var(--dark);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:40px 24px;
+}
+.br-wrap::before{
   content:'';position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(0,229,204,.04) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,229,204,.04) 1px,transparent 1px);
-  background-size:44px 44px;
-  pointer-events:none;
+  background-size:44px 44px;pointer-events:none;
 }
-.br-rain{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.raindrop{
-  position:absolute;top:-120px;width:1px;
-  background:linear-gradient(transparent,rgba(0,229,204,.35));
-  animation:fall linear infinite;
-}
-@keyframes fall{to{transform:translateY(110vh)}}
-.br-label{
-  font-size:10px;letter-spacing:4px;color:rgba(0,229,204,.5);
-  margin-bottom:24px;text-transform:uppercase;
-}
-.br-title{
-  font-size:clamp(28px,6vw,48px);font-weight:900;
-  color:var(--neon);
-  text-shadow:0 0 12px var(--neon),0 0 40px rgba(0,229,204,.4);
-  text-align:center;line-height:1.2;margin-bottom:16px;
-  animation:flicker 8s ease-in-out infinite;
-}
-@keyframes flicker{
-  0%,19%,21%,23%,100%{text-shadow:0 0 12px var(--neon),0 0 40px rgba(0,229,204,.4)}
-  20%,22%{text-shadow:none;color:rgba(0,229,204,.7)}
-}
-.br-sub{
-  font-size:14px;color:rgba(0,229,204,.6);text-align:center;
-  line-height:1.8;max-width:500px;margin-bottom:12px;
-}
-.br-line{width:60px;height:1px;background:rgba(0,229,204,.3);margin:20px auto}
-.br-detail{
-  font-size:12px;color:rgba(0,229,204,.35);text-align:center;
-  letter-spacing:1px;margin-bottom:32px;
-}
-.br-btn{
-  background:transparent;border:1px solid var(--neon);
-  color:var(--neon);font-family:'Courier New',monospace;
-  font-size:14px;padding:12px 32px;cursor:pointer;letter-spacing:2px;
-  transition:all .3s;position:relative;overflow:hidden;
-}
-.br-btn::before{
-  content:'';position:absolute;inset:0;
-  background:var(--neon);transform:translateX(-100%);
-  transition:transform .3s;z-index:-1;
-}
-.br-btn:hover{color:var(--dark);text-shadow:none}
-.br-btn:hover::before{transform:translateX(0)}
-.br-corner{
-  position:absolute;font-size:10px;letter-spacing:1px;
-  color:rgba(0,229,204,.2);font-family:'Courier New',monospace;
-}
-.br-corner.tl{top:16px;left:20px}
-.br-corner.tr{top:16px;right:20px}
-.br-corner.bl{bottom:16px;left:20px}
-.br-corner.br{bottom:16px;right:20px}
+.br-rain{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.drop{position:absolute;top:-120px;width:1px;background:linear-gradient(transparent,rgba(0,229,204,.3));animation:rain linear infinite}
+@keyframes rain{to{transform:translateY(110vh)}}
+.br-z{position:relative;z-index:1}
+.br-corner{position:absolute;font-size:10px;color:rgba(0,229,204,.18);font-family:'Courier New',monospace;letter-spacing:1px}
+.br-corner.tl{top:14px;left:18px}.br-corner.tr{top:14px;right:18px}
+.br-corner.bl{bottom:14px;left:18px}.br-corner.br2{bottom:14px;right:18px}
 
-/* zoom-out transition */
+/* CONSUMER ADS */
+#ads{position:fixed;inset:0;pointer-events:none;z-index:0;display:none;overflow:hidden}
+#ads.show{display:block}
+.ad{
+  position:absolute;font-family:'Arial Black',Impact,sans-serif;font-weight:900;
+  text-transform:uppercase;letter-spacing:2px;white-space:nowrap;
+  animation:adp ease-in-out infinite;
+}
+@keyframes adp{0%,100%{opacity:var(--ao,.08)}50%{opacity:calc(var(--ao,.08)*1.6)}}
 @keyframes zoomOut{from{transform:scale(1);opacity:1}to{transform:scale(4);opacity:0}}
-.zooming{animation:zoomOut .6s ease-in forwards}
+.zooming{animation:zoomOut .55s ease-in forwards}
 
-/* ========== FANTASY WORLD ========== */
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  color:var(--text);overflow-x:hidden;
+/* ── SF2 CARDS ──────────────────────────── */
+.cards-wrap{min-height:100vh;background:var(--dark);position:relative;padding:134px 20px 80px;display:none}
+.cards-wrap::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,229,204,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,204,.04) 1px,transparent 1px);
+  background-size:44px 44px;pointer-events:none;
 }
-.fantasy-bg{
-  background:linear-gradient(135deg,#FFD6EC 0%,#D4EEFF 30%,#D5F5E3 60%,#FFF4CC 100%);
-  background-size:400% 400%;animation:bgwave 12s ease-in-out infinite;
-  min-height:100vh;
+.cards-inner{max-width:580px;margin:0 auto;position:relative;z-index:1;padding-right:16px;padding-bottom:200px}
+.cards-title{font-family:Times,"Times New Roman",serif;font-size:45px;font-weight:900;color:#fff;margin-bottom:10px;text-align:center}
+.pkg{background:#0c0c20;border-radius:14px;margin-bottom:40px;overflow:hidden;position:relative}
+.pkg::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--n,#00e5cc)}
+.pkg-top{padding:22px 26px 10px 28px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:13px}
+.pkg-icon{font-size:34px;flex-shrink:0;filter:drop-shadow(0 0 8px var(--n,#00e5cc))}
+.pkg-name{font-family:Times,"Times New Roman",serif;font-size:23px;font-weight:900;color:#fff}
+.pkg-sub{font-family:Times,"Times New Roman",serif;font-size:12px;font-style:italic;color:rgba(255,255,255,.4);margin-top:2px}
+.pkg-body{padding:14px 26px 28px 28px}
+.pkg-desc{font-family:Times,"Times New Roman",serif;font-size:15px;color:rgba(255,255,255,.6);line-height:2.2;margin-bottom:20px}
+.stat-row{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.stat-lbl{font-family:Times,"Times New Roman",serif;font-size:10px;font-style:italic;color:#00C5AA;width:160px;flex-shrink:0}
+.stat-bar{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.stat-fill{height:100%;border-radius:3px;background:var(--n,#00e5cc);box-shadow:0 0 6px var(--n,#00e5cc)}
+.stat-e{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.pkg-review{font-family:Times,"Times New Roman",serif;font-size:15px;font-style:italic;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.06);margin-top:22px;padding-top:22px;line-height:2.1}
+.stars{color:var(--n,#00e5cc)}
+
+/* ── FANTASY WORLD ──────────────────────── */
+#fantasy{display:none}
+.fsc{display:none}
+.fsc.on{display:block}
+.fw{max-width:680px;margin:0 auto;padding:134px 20px 100px}
+.m-card{background:rgba(255,255,255,.93);border-radius:var(--r);padding:24px;margin-bottom:16px;box-shadow:0 6px 24px rgba(0,0,0,.1)}
+
+/* SW background */
+#sw-bg{display:none;position:fixed;inset:0;z-index:0;
+  background:linear-gradient(180deg,#A8D4E8 0%,#C8E4F0 18%,#EDD870 44%,#E0924A 60%,#C07838 74%,#8B5020 88%,#5A3010 100%)}
+.sw-sun{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+#sun1{width:52px;height:52px;top:50%;left:40%;background:radial-gradient(circle,#FFEE88 0%,#FFD700 40%,#FF9900 70%,transparent 100%);box-shadow:0 0 30px 18px rgba(255,200,50,.45)}
+#sun2{width:36px;height:36px;top:52%;left:52%;background:radial-gradient(circle,#FFE088 0%,#FFCC00 45%,#FF8800 75%,transparent 100%);box-shadow:0 0 22px 12px rgba(255,180,50,.4)}
+
+/* SF3 timeline */
+.tl-item{display:flex;gap:14px;margin-bottom:18px}
+.tl-num{font-family:'Courier New',monospace;font-size:12px;font-weight:900;color:#E8B870;width:24px;flex-shrink:0;padding-top:3px}
+.tl-title{font-family:Times,"Times New Roman",serif;font-size:20px;font-weight:900;color:#000;margin-bottom:5px}
+.tl-body{font-family:Times,"Times New Roman",serif;font-size:15px;color:#000;line-height:1.7}
+
+
+
+
+/* SF4 scenario */
+#sm3 .sc-i{border-radius:13px;padding:22px 24px;margin-bottom:18px;border:1.5px solid rgba(0,0,0,.08);background:linear-gradient(135deg,rgba(181,234,215,.2),rgba(174,214,241,.2))}
+#sm3 .sc-h{font-family:Times,"Times New Roman",serif;font-size:30px;font-weight:900;color:#333;margin-bottom:10px}
+#sm3 .sc-b{font-family:Times,"Times New Roman",serif;font-size:17px;color:#555;line-height:1.72}
+#sm3 .m-aside{font-family:Times,"Times New Roman",serif;font-size:20px;font-style:italic;color:#555;line-height:1.7;border-left:3px solid rgba(197,80,167,.4);padding:18px 20px;margin-bottom:24px;background:rgba(197,80,167,.06);border-radius:0 12px 12px 0}
+
+/* SF5 communist */
+#sm5-bg{display:none;position:fixed;inset:0;z-index:0;background:#BB0000}
+.comm-card{background:rgba(139,0,0,.75);border:1px solid rgba(255,215,0,.3);border-radius:var(--r);padding:28px 26px;margin-bottom:22px}
+.comm-h{font-family:Times,"Times New Roman",serif;font-size:26px;font-weight:900;color:#FFD700;margin-bottom:14px}
+.comm-b{font-family:Times,"Times New Roman",serif;font-size:18px;color:rgba(255,215,0,.85);line-height:1.85}
+
+/* TOOLTIP */
+#mtip{
+  display:none;position:fixed;right:14px;bottom:20px;z-index:9997;max-width:240px;
 }
-@keyframes bgwave{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+#mtip.show{display:block}
+#mtip-inner{
+  background:rgba(15,5,30,.9);border:1px solid rgba(197,80,167,.5);
+  border-radius:14px 14px 0 14px;padding:12px 14px;
+  font-family:Times,"Times New Roman",serif;font-size:13px;color:rgba(255,255,255,.85);line-height:1.6;
+}
+#mtip-who{font-size:10px;color:#C550A7;font-weight:900;margin-bottom:4px}
 
-.ptcl{position:fixed;pointer-events:none;z-index:0;animation:pfloat linear infinite;opacity:.6}
-@keyframes pfloat{0%{transform:translateY(110vh) rotate(0);opacity:0}5%{opacity:.6}95%{opacity:.4}100%{transform:translateY(-80px) rotate(540deg);opacity:0}}
+/* DATA-TIP */
+[data-tip]{cursor:pointer;border-bottom:1.5px dotted rgba(255,255,255,.3)}
+.fantasy-tip{border-bottom:1.5px dotted rgba(0,0,0,.3)}
 
-/* ========== SCREENS ========== */
-.sc{display:none;position:relative;z-index:1}
-.sc.on{display:block;animation:fadeUp .4s cubic-bezier(.22,.61,.36,1)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.wrap{max-width:680px;margin:0 auto;padding:32px 20px 140px}
+/* BUTTONS */
+.btn-dark{
+  display:block;width:100%;padding:16px 24px;border:none;border-radius:50px;
+  background:linear-gradient(135deg,#FF6B9D,#C550A7);color:#fff;
+  font-family:Times,"Times New Roman",serif;font-size:18px;font-weight:700;
+  cursor:pointer;text-align:center;margin-top:14px;
+}
+.btn-ghost{
+  display:block;width:100%;padding:14px 24px;border:1.5px solid rgba(0,0,0,.15);
+  background:rgba(255,255,255,.7);color:#666;border-radius:50px;
+  font-family:Times,"Times New Roman",serif;font-size:16px;cursor:pointer;
+  text-align:center;margin-top:10px;
+}
 
-/* ========== TOOLTIP (CLICK-BASED) ========== */
-[data-tip]{
+/* CONFETTI */
+#cf{position:fixed;inset:0;pointer-events:none;z-index:200;display:none}
+#cf.on{display:block}
+.cfp{position:absolute;top:-10px;border-radius:2px;animation:cfall linear infinite}
+@keyframes cfall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+
+/* SEND PAGE */
+#send .send-lnk{
+  display:block;text-align:center;padding:18px 0;
+  font-family:Times,"Times New Roman",serif;font-size:20px;color:#555;
+  text-decoration:none;border-bottom:1px solid rgba(0,0,0,.08);
+  cursor:pointer;transition:color .2s;
+}
+#send .send-lnk:hover{color:#111}
+
+/* PASTELS per screen */
+.p-pink{background:linear-gradient(135deg,#FFD6EC,#D4EEFF,#D5F5E3,#FFF4CC);background-size:400% 400%;animation:bw 12s ease-in-out infinite}
+.p-erotic{background:linear-gradient(135deg,#1a0025,#5c0040,#8B0057,#cc0066,#ff1188)}
+.p-harajuku{background:linear-gradient(135deg,#FFB3C1,#C7CEEA,#B5EAD7,#FDFD96,#AED6F1,#FFB3C1)}
+.p-lgbt{background:linear-gradient(180deg,#E40303 0%,#E40303 14.3%,#FF8C00 14.3%,#FF8C00 28.6%,#FFED00 28.6%,#FFED00 42.9%,#008026 42.9%,#008026 57.2%,#004DFF 57.2%,#004DFF 71.5%,#750787 71.5%,#750787 85.8%,#000 85.8%,#000 100%)}
+.p-grey{background:#f2f2f2}
+@keyframes bw{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.fw-outer{min-height:100vh}
+
+/* fancy SF4 header */
+.halis-h{font-family:Times,"Times New Roman",serif;font-size:50px;font-weight:900;color:#7B2FBE;margin-bottom:10px}
+.halis-s{font-family:Times,"Times New Roman",serif;font-size:20px;color:#000;font-weight:400;margin-bottom:20px}
+
+
+@keyframes kiddy{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.kiddy-btn{
+  background:linear-gradient(135deg,#FF6B9D,#FFE66D,#6BFFB8,#6BC5FF,#FF6BFF,#FFB86B,#FF6B9D);
+  background-size:300% 300%;animation:kiddy 2s ease-in-out infinite;
+  color:#333;border:none;border-radius:12px;cursor:pointer;
+  font-family:Times,"Times New Roman",serif;font-size:26px;font-weight:900;
+  padding:20px 28px;display:block;width:100%;text-align:center;margin-top:16px;
+  box-shadow:0 4px 20px rgba(255,107,157,.4);
+}
+
+#banner.light{background:#f0f0f0;border-bottom:1px solid #ddd}
+#banner.light button{color:#555}
+
+.giris-title-click{
   cursor:pointer;
-  border-bottom:1.5px dotted rgba(0,0,0,.3);
-  display:inline;
+  animation:elec 4s ease-in-out infinite;
+  display:inline-block;
 }
-.tip-popup{
-  position:fixed;
-  background:rgba(20,20,30,.95);color:#fff;
-  padding:10px 14px;border-radius:12px;
-  font-size:13px;line-height:1.55;
-  max-width:260px;z-index:10000;
-  pointer-events:none;
-  animation:tpop .2s ease;
-  box-shadow:0 4px 20px rgba(0,0,0,.3);
+.giris-title-click:hover{
+  text-shadow:0 0 20px rgba(200,200,255,.6);
+  transition:text-shadow .2s;
 }
-@keyframes tpop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+/* GİRİŞ electric */
+@keyframes elec{
+  0%,75%,83%,100%{color:#777;text-shadow:none;transform:none}
+  76%{color:#ddd;text-shadow:0 0 8px #ccc,0 0 24px rgba(180,220,255,.7),0 0 50px rgba(100,180,255,.4);transform:translateX(-2px)}
+  77%{color:#666;text-shadow:none;transform:translateX(2px)}
+  78%{color:#fff;text-shadow:0 0 12px #fff,0 0 36px rgba(150,210,255,.9),0 0 70px rgba(80,160,255,.5);transform:none}
+  79%{color:#777;text-shadow:none;transform:translateX(-1px)}
+  80%{color:#bbb;text-shadow:0 0 6px #bbb,0 0 18px rgba(180,220,255,.5);transform:none}
+  81%,82%{color:#777;text-shadow:none;transform:none}
+}
+.giris-electric{
+  font-family:Times,"Times New Roman",serif;
+  font-size:clamp(22px,5vw,42px);
+  font-weight:400;letter-spacing:10px;color:#777;
+  cursor:pointer;display:inline-block;
+  animation:elec 4s ease-in-out infinite;
+  padding:10px 24px;user-select:none;
+}
+.giris-electric:hover{color:#999;letter-spacing:12px;transition:letter-spacing .3s}
 
-/* ========== TYPOGRAPHY ========== */
-.big-e{font-size:68px;display:block;animation:bb 1.4s ease-in-out infinite;text-align:center}
-@keyframes bb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.04)}}
-.lbl-sm{font-size:11px;letter-spacing:3px;color:var(--textx);text-transform:uppercase;text-align:center;margin-bottom:8px}
-.box{background:var(--white);border-radius:var(--r);padding:20px;margin:18px 0;box-shadow:0 4px 22px rgba(0,0,0,.07)}
-.box p{font-size:14px;color:var(--texts);line-height:1.9}
-
-/* ========== BUTTONS ========== */
-.btn{display:block;width:100%;padding:14px 24px;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;text-align:center;transition:transform .15s,box-shadow .15s;margin-bottom:10px;font-family:inherit}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.btn:active{transform:translateY(0)}
-.btn-pink{background:linear-gradient(135deg,#FF6B9D,#C550A7);color:#fff}
-.btn-mint{background:linear-gradient(135deg,#00B894,#00CEC9);color:#fff}
-.btn-ghost{background:rgba(255,255,255,.8);color:var(--texts);border:1.5px solid rgba(0,0,0,.1)}
-.btn-rb{background:linear-gradient(135deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);background-size:200% 200%;animation:rbs 3s ease infinite;color:#fff}
-@keyframes rbs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-/* ========== CHARACTER CARDS ========== */
-.pkg-card{background:var(--white);border-radius:var(--r);margin-bottom:15px;box-shadow:0 6px 22px rgba(0,0,0,.09);overflow:hidden;animation:cardIn .5s cubic-bezier(.22,.61,.36,1) both;border:2px solid rgba(255,255,255,.7)}
-@keyframes cardIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-.pkg-card:nth-child(1){animation-delay:.07s}.pkg-card:nth-child(2){animation-delay:.15s}.pkg-card:nth-child(3){animation-delay:.23s}.pkg-card:nth-child(4){animation-delay:.31s}.pkg-card:nth-child(5){animation-delay:.39s}
-.pkg-top{padding:16px 18px 13px;background:linear-gradient(135deg,var(--c1),var(--c2));display:flex;align-items:center;gap:13px}
-.pkg-icon{font-size:42px;flex-shrink:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,.1))}
-.pkg-badge{display:inline-block;background:rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:2px 9px;border-radius:20px;margin-bottom:3px;text-transform:uppercase}
-.pkg-name{font-size:16px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.1)}
-.pkg-sub{font-size:12px;color:rgba(255,255,255,.82);margin-top:2px}
-.pkg-body{padding:15px 18px}
-.pkg-desc{font-size:14px;color:var(--texts);line-height:1.75;margin-bottom:13px}
-.stat-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.stat-lbl{font-size:10px;color:var(--textx);width:128px;flex-shrink:0;font-weight:700;letter-spacing:.3px}
-.stat-bar{flex:1;height:7px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden}
-.stat-fill{height:100%;border-radius:4px}
-.stat-e{font-size:13px;width:18px;text-align:center;flex-shrink:0}
-.pkg-tags{margin-top:11px;display:flex;flex-wrap:wrap;gap:5px}
-.ptag{font-size:11px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:3px 9px;color:var(--texts)}
-.pkg-review{margin-top:11px;font-size:12px;padding:8px 12px;border-radius:10px;background:rgba(0,0,0,.04);color:var(--texts);font-style:italic;line-height:1.6}
-.stars{color:#FDCB6E;letter-spacing:1px}
-.div-c{text-align:center;margin:22px 0;color:var(--textx);font-size:18px;letter-spacing:8px}
-.world-tag{display:inline-block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.7);font-family:'Courier New',monospace;margin-bottom:4px;text-transform:uppercase}
-
-/* ========== MINAKO ========== */
-.minako-tal{text-align:center;padding:26px 18px;background:linear-gradient(135deg,rgba(232,195,255,.4),rgba(174,214,241,.4),rgba(181,234,215,.4));border-radius:var(--r);margin:0 0 18px;border:2px dashed rgba(197,80,167,.25);position:relative;overflow:hidden}
-.minako-tal::before{content:'✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨';position:absolute;top:-5px;left:0;right:0;font-size:17px;letter-spacing:12px;opacity:.2;white-space:nowrap;overflow:hidden;pointer-events:none}
-.m-e{font-size:58px;display:inline-block;cursor:pointer;animation:mf 2.5s ease-in-out infinite;filter:drop-shadow(0 5px 10px rgba(197,80,167,.2));transition:transform .2s;position:relative;z-index:1}
-.m-e:hover{transform:scale(1.1) rotate(-5deg)}
-@keyframes mf{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
-.m-rb{font-size:24px;display:block;margin-bottom:3px;animation:hue 5s linear infinite}
-@keyframes hue{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(360deg)}}
-.m-namelbl{font-size:11px;color:#C550A7;font-weight:800;letter-spacing:.5px;margin-top:5px}
-.m-bubble{background:white;border-radius:17px 17px 17px 3px;padding:12px 15px;display:inline-block;margin:12px auto 0;max-width:290px;text-align:left;box-shadow:0 4px 18px rgba(0,0,0,.1);animation:bpop .4s cubic-bezier(.22,.61,.36,1) .4s both;position:relative;z-index:1}
-@keyframes bpop{from{transform:scale(.8) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-.mb-who{font-size:10px;color:#C550A7;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
-.mb-txt{font-size:13px;color:var(--text);line-height:1.65}
-.mb-btn{display:inline-block;margin-top:9px;background:linear-gradient(135deg,#C550A7,#6C5CE7);color:white;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;font-family:inherit;transition:transform .15s}
-.mb-btn:hover{transform:scale(1.05)}
-
-/* ========== MINAKO SCREENS ========== */
-.m-card{background:var(--white);border-radius:var(--r);padding:22px;margin-bottom:16px;box-shadow:0 6px 26px rgba(0,0,0,.09)}
-.m-hdr{display:flex;align-items:center;gap:11px;margin-bottom:16px;padding-bottom:13px;border-bottom:1px solid rgba(0,0,0,.07)}
-.m-av{font-size:34px;animation:mf 2.5s ease-in-out infinite;display:inline-block}
-.m-who2{font-size:11px;color:#C550A7;font-weight:800;margin-bottom:2px}
-.m-sub2{font-size:11px;color:var(--textx)}
-.m-p{font-size:14px;color:var(--text);line-height:1.85;margin-bottom:10px}
-.m-p strong{color:#C550A7}
-.m-aside{background:linear-gradient(135deg,rgba(232,195,255,.2),rgba(174,214,241,.2));border-left:3px solid rgba(197,80,167,.3);border-radius:0 11px 11px 0;padding:11px 14px;margin:12px 0;font-size:13px;color:var(--texts);line-height:1.72}
-.badge-exp{display:inline-block;background:linear-gradient(135deg,rgba(255,179,193,.4),rgba(199,206,234,.4));border:1.5px dashed rgba(197,80,167,.3);font-size:11px;font-weight:700;color:#777;padding:3px 11px;border-radius:20px;margin:7px 0 12px}
-.info-i{border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--ic);background:rgba(0,0,0,.03)}
-.info-h{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
-.info-b{font-size:13px;color:var(--texts);line-height:1.72}
-.sc-i{border-radius:13px;padding:13px 15px;margin-bottom:8px;border:1.5px solid rgba(0,0,0,.07);background:linear-gradient(135deg,rgba(181,234,215,.25),rgba(174,214,241,.25))}
-.sc-i.warn{background:linear-gradient(135deg,rgba(253,218,193,.3),rgba(249,243,204,.3));border-style:dashed}
-.sc-h{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
-.sc-b{font-size:13px;color:var(--texts);line-height:1.72}
-.rb-text{background:linear-gradient(90deg,#FF6B9D,#C550A7,#6C5CE7,#00B894,#FDCB6E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
-
-/* confetti */
-.cfwrap{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:200;display:none}
-.cfwrap.on{display:block}
-.cf{position:absolute;top:-10px;border-radius:2px;animation:cffall linear infinite}
-@keyframes cffall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.2}}
-.end-wrap{text-align:center;padding:44px 20px}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
 </style>
 </head>
 <body>
 
-<!-- BLADE RUNNER OPENING -->
-<div id="br-opening">
-  <div class="br-world" id="br-world">
-    <div class="br-rain" id="brRain"></div>
-    <div class="br-corner tl">SYS://TR2026</div>
-    <div class="br-corner tr">HAZ 2026</div>
-    <div class="br-corner bl">STATUS: UNKNOWN</div>
-    <div class="br-corner br">v3.0.1</div>
+<!-- BANNER -->
+<div id="banner"><button onclick="goBack()">geri döniyim.<br>hafızam çok iyi değil.</button></div
 
-    <div class="br-label">bir dünyaya zoom ediyoruz</div>
-    <div class="br-title">şimdi nolcak?</div>
-    <div class="br-sub">Cevap yok. İlk defa. Ve bu aslında iyi bir şey.</div>
-    <div class="br-line"></div>
-    <div class="br-detail">Haziran 2026 · İstanbul · Mutlak butlan sonrası</div>
-    <button class="br-btn" onclick="zoomIn()">ZOOM ET →</button>
+
+<!-- CONSUMER ADS -->
+<div id="rain" style="display:none"></div>
+<div id="ads">
+  <div class="ad" style="top:6%;left:-2%;font-size:clamp(40px,8vw,80px);color:#FF0080;--ao:.07;animation-duration:7s">CONSUME</div>
+  <div class="ad" style="top:8%;right:-1%;font-size:clamp(28px,5vw,50px);color:#FFE600;--ao:.06;animation-duration:11s;animation-delay:2s">FEEL NOTHING</div>
+  <div class="ad" style="top:28%;left:3%;font-size:clamp(13px,2.5vw,20px);color:#00FFCC;--ao:.09;animation-duration:9s;animation-delay:1s">YOUR DESIRES ARE OUR PRODUCT™</div>
+  <div class="ad" style="top:36%;right:2%;font-size:clamp(11px,2vw,16px);color:#FF6B00;--ao:.08;animation-duration:8s;animation-delay:3s">STAY DISTRACTED. STAY COMPLIANT.</div>
+  <div class="ad" style="top:54%;left:4%;font-size:clamp(28px,6vw,60px);color:#CC00FF;--ao:.06;animation-duration:13s;animation-delay:1.5s">BUY. SCROLL. FORGET.</div>
+  <div class="ad" style="top:63%;right:3%;font-size:clamp(11px,2vw,16px);color:#FF0080;--ao:.07;animation-duration:10s;animation-delay:4s">ALGORITHM-APPROVED HAPPINESS™</div>
+  <div class="ad" style="top:76%;left:2%;font-size:clamp(10px,1.8vw,15px);color:#FFE600;--ao:.06;animation-duration:12s;animation-delay:.5s">THE MARKET KNOWS YOUR NEEDS</div>
+  <div class="ad" style="top:82%;right:1%;font-size:clamp(24px,5vw,46px);color:#FF6B00;--ao:.07;animation-duration:8s;animation-delay:2s">PLEASURE IS THE ONLY EXIT</div>
+  <div class="ad" style="top:50%;left:30%;font-size:clamp(55px,12vw,110px);color:#FF0080;--ao:.03;animation-duration:6s;animation-delay:.8s;transform:rotate(-15deg)">CONSUME™</div>
+</div>
+
+<!-- SW SCENE -->
+<div id="sw-bg"></div>
+<div class="sw-sun" id="sun1"></div>
+<div class="sw-sun" id="sun2"></div>
+
+<!-- ═══════════ SF1: OPENING ═══════════ -->
+<div id="sf1">
+  <div class="br-wrap">
+    <div class="br-z">
+      <div class="br-corner tl">SYS://TR2026</div>
+      <div class="br-corner tr">HAZ 2026</div>
+      <div class="br-corner br2">v9.0</div>
+      <h1 style="font-family:Times,'Times New Roman',serif;font-size:clamp(60px,14vw,150px);font-weight:900;color:#888;margin-bottom:18px;line-height:1.1">DOOMER'A* <span onclick="zoomIn()" class="giris-title-click">GİRİŞ</span></h1>
+      <div style="font-family:Times,'Times New Roman',serif;font-size:clamp(13px,3.2vw,31px);font-weight:400;font-style:italic;color:#777;margin-bottom:8px;letter-spacing:1px">Mutlak'a Butlan(amay)an Umutlara...</div>
+      <div style="font-family:Times,'Times New Roman',serif;font-size:clamp(12px,2.5vw,22px);font-weight:400;color:rgba(150,150,150,.6);letter-spacing:3px;margin-bottom:24px">#OutOfSilivriDeğil #MakeSilivriGreatAgainProject</div>
+      <div style="font-family:Times,'Times New Roman',serif;font-size:clamp(11px,2.5vw,20px);font-weight:400;font-style:italic;color:rgba(150,150,150,.5);margin-top:10px;letter-spacing:.5px">*neymiş gir de gör</div>
+      <div style="width:60px;height:1px;background:rgba(150,150,150,.2);margin:0 auto 32px"></div>
+    </div>
   </div>
 </div>
 
-<!-- FANTASY WORLD -->
-<div id="fantasy-world" style="display:none">
-  <div class="fantasy-bg">
+<!-- ═══════════ SF2: NPC'LER ═══════════ -->
+<div id="sf2" style="display:none">
+  <div class="cards-wrap" style="display:block">
+    <div class="cards-inner">
+      <div class="cards-title">NPC'LERİ ÖĞRENİYORUM</div>
 
-    <div class="ptcl" style="left:4%;font-size:17px;animation-duration:8s;animation-delay:0s">✨</div>
-    <div class="ptcl" style="left:13%;font-size:12px;animation-duration:11s;animation-delay:2s">⭐</div>
-    <div class="ptcl" style="left:24%;font-size:20px;animation-duration:9s;animation-delay:1s">💫</div>
-    <div class="ptcl" style="left:37%;font-size:13px;animation-duration:13s;animation-delay:3.5s">🌟</div>
-    <div class="ptcl" style="left:50%;font-size:17px;animation-duration:7s;animation-delay:1.5s">✨</div>
-    <div class="ptcl" style="left:62%;font-size:12px;animation-duration:10s;animation-delay:4s">⭐</div>
-    <div class="ptcl" style="left:74%;font-size:18px;animation-duration:8s;animation-delay:.5s">💫</div>
-    <div class="ptcl" style="left:85%;font-size:13px;animation-duration:12s;animation-delay:2.5s">🌟</div>
-    <div class="ptcl" style="left:94%;font-size:15px;animation-duration:9s;animation-delay:.8s">✨</div>
-
-    <div class="cfwrap" id="cf"></div>
-
-    <div class="wrap">
-
-      <!-- S1: 5 DÜNYA -->
-      <div class="sc on" id="s1">
-        <div class="lbl-sm" style="margin-bottom:6px">bu dünyada</div>
-        <div style="text-align:center;font-size:22px;font-weight:900;margin-bottom:6px">bunlar böyle yaşıyor.</div>
-        <div style="text-align:center;font-size:13px;color:var(--textx);margin-bottom:24px">Türkiye 2026 · Haziran</div>
-
-        <!-- 1: Şükreden Fatalist -->
-        <div class="pkg-card">
-          <div class="pkg-top" style="--c1:#FFB3C1;--c2:#FF6B9D">
-            <span class="pkg-icon">🕊️</span>
-            <div>
-              <div class="world-tag">bu dünyada</div>
-              <div class="pkg-name">Şükreden Fatalist</div>
-              <div class="pkg-sub">Kötü şeyler olduğunda anlam üretiyorlar.</div>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <p class="pkg-desc">Sistemin değişmesi gerekmiyor — bakış açıları değişiyor. Her kötü gelişme bir sınavdır. Her hayal kırıklığı bir hikmettir. Bu içten bir tutum. Ve bu tutum, "şimdi nolcak?" sorusunu sormayı gereksiz kılıyor.</p>
-            <div class="stat-row"><span class="stat-lbl">İÇSEL HUZUR</span><div class="stat-bar"><div class="stat-fill" style="width:92%;background:linear-gradient(90deg,#FFB3C1,#FF6B9D)"></div></div><span class="stat-e">😌</span></div>
-            <div class="stat-row"><span class="stat-lbl">ÖFKE SEVİYESİ</span><div class="stat-bar"><div class="stat-fill" style="width:3%;background:#ddd"></div></div><span class="stat-e">🌸</span></div>
-            <div class="stat-row"><span class="stat-lbl">DEĞİŞİM ÇABASI</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#ddd"></div></div><span class="stat-e">🍃</span></div>
-            <div class="pkg-review">"Hiçbir şey beklememek çok rahatlatıcı." <span class="stars">★★★★★</span></div>
-          </div>
-        </div>
-
-        <!-- 2: Coğrafya Deterministi -->
-        <div class="pkg-card">
-          <div class="pkg-top" style="--c1:#B5EAD7;--c2:#00B894">
-            <span class="pkg-icon">🗺️</span>
-            <div>
-              <div class="world-tag">bu dünyada</div>
-              <div class="pkg-name">Coğrafya Deterministi</div>
-              <div class="pkg-sub">Bu topraklarda böyle olur. Hep oldu.</div>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <p class="pkg-desc">Apolitik kalmak bir <span data-tip="hayatta kalmak için sistemle çatışmadan çekilmek — rasyonel bir tercih olarak sunulan ama aslında bir kabullenme">hayatta kalma stratejisi</span>. Siyaset enerjini tüketir. Sessizlik akıllılık. "Bu topraklarda böyle olur" ifadesi hem bir gözlem hem bir kalkan. "Şimdi nolcak?" sorusu bu dünyada sorulmaz bile.</p>
-            <div class="stat-row"><span class="stat-lbl">RADAR ALTI KALMA</span><div class="stat-bar"><div class="stat-fill" style="width:95%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-e">👻</span></div>
-            <div class="stat-row"><span class="stat-lbl">ENERJİ TASARRUFU</span><div class="stat-bar"><div class="stat-fill" style="width:87%;background:linear-gradient(90deg,#B5EAD7,#00B894)"></div></div><span class="stat-e">🔋</span></div>
-            <div class="stat-row"><span class="stat-lbl">ÜMİT BARINDIRMA</span><div class="stat-bar"><div class="stat-fill" style="width:5%;background:#ddd"></div></div><span class="stat-e">🌵</span></div>
-            <div class="pkg-review">"Apolitik olmak benim için özgürlük." <span class="stars">★★★★★</span></div>
-          </div>
-        </div>
-
-        <!-- 3: Yorulmuş İdealist -->
-        <div class="pkg-card">
-          <div class="pkg-top" style="--c1:#C7CEEA;--c2:#6C5CE7">
-            <span class="pkg-icon">🕯️</span>
-            <div>
-              <div class="world-tag">bu dünyada</div>
-              <div class="pkg-name">Yorulmuş İdealist</div>
-              <div class="pkg-sub">Söylüyorlar. Hâlâ. Devam ediyorlar.</div>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <p class="pkg-desc">Söylüyorlar ama içleri doldurulmuş gibi değil. Her hayal kırıklığı daha olgun hissettiriyor. "Zaten böyle olacaktı" cümlesi artık bir analiz değil, bir zırh. "Şimdi nolcak?" sorusuna "yine aynı" diye cevap veriyorlar. Bu cevap bir gözlem mi yoksa bir <span data-tip="acıya alışmak, beklentileri düşürerek koruma mekanizması kurmak">bağışıklık mekanizması</span> mı, belli değil.</p>
-            <div class="stat-row"><span class="stat-lbl">SÖYLEMSELLİK</span><div class="stat-bar"><div class="stat-fill" style="width:90%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-e">📣</span></div>
-            <div class="stat-row"><span class="stat-lbl">SOMUT ADIM</span><div class="stat-bar"><div class="stat-fill" style="width:7%;background:#ddd"></div></div><span class="stat-e">🌀</span></div>
-            <div class="stat-row"><span class="stat-lbl">YILGININ ZARAFETİ</span><div class="stat-bar"><div class="stat-fill" style="width:84%;background:linear-gradient(90deg,#C7CEEA,#6C5CE7)"></div></div><span class="stat-e">😮‍💨</span></div>
-            <div class="pkg-review">"Değişmeyeceğini bilmek aslında özgürleştirici." <span class="stars">★★★★★</span></div>
-          </div>
-        </div>
-
-        <!-- 4: Sistem Suçlayıcı -->
-        <div class="pkg-card">
-          <div class="pkg-top" style="--c1:#FFDAC1;--c2:#E17055">
-            <span class="pkg-icon">⚙️</span>
-            <div>
-              <div class="world-tag">bu dünyada</div>
-              <div class="pkg-name">Sistem Suçlayıcı</div>
-              <div class="pkg-sub">Asıl sorun kapitalizm. Başka soru yok.</div>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <p class="pkg-desc">Kapitalizm, emperyalizm, <span data-tip="küresel finans sisteminin ulusal politikalar üzerindeki belirleyiciliği — gerçek bir analiz çerçevesi ama bazen spesifik sorumluluğu dağıtmak için kullanılıyor">finans kapital</span>, hegemonya. Teşhis doğru. Ama spesifik adım üretmek gerekmez çünkü asıl sorun sistem. "Şimdi nolcak?" sorusu bu dünyada "sistem değişmeden hiçbir şey" cevabıyla karşılanır. Doğru ama işlevsiz.</p>
-            <div class="stat-row"><span class="stat-lbl">MAKRO ANALİZ</span><div class="stat-bar"><div class="stat-fill" style="width:97%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-e">🔭</span></div>
-            <div class="stat-row"><span class="stat-lbl">SPESİFİK ADIM</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#ddd"></div></div><span class="stat-e">🚫</span></div>
-            <div class="stat-row"><span class="stat-lbl">TARTIŞMA GALİBİYETİ</span><div class="stat-bar"><div class="stat-fill" style="width:99%;background:linear-gradient(90deg,#FFDAC1,#E17055)"></div></div><span class="stat-e">🏆</span></div>
-            <div class="pkg-review">"Sorun sistemse çözüm de sistemsel." <span class="stars">★★★★★</span></div>
-          </div>
-        </div>
-
-        <!-- 5: Repütasyoncu Kemalist (UPDATED) -->
-        <div class="pkg-card">
-          <div class="pkg-top" style="--c1:#D6EAF8;--c2:#2E86C1">
-            <span class="pkg-icon">🏛️</span>
-            <div>
-              <div class="world-tag">bu dünyada</div>
-              <div class="pkg-name">Repütasyoncu Kemalist</div>
-              <div class="pkg-sub">"Mustafa Kemal'in partisine ihanet ettiler."</div>
-            </div>
-          </div>
-          <div class="pkg-body">
-            <p class="pkg-desc">Atatürk'e gerçek bir bağlılık var. Cumhuriyet değerleri var. Ama soru "ne yapmalıyız?" değil, "biz neyiz?" ve "kim ne kadar Kemalist görünüyor?". <span data-tip="itibarı, sembolik doğruluğu ve 'biz neyiz?' sorusunu somut adımların önünde tutmak — doğruluk yerine temsil kaygısı">Repütasyonculuk</span> her şeyin önüne geçiyor. "İhanet ettiler" anlatısı sabitleniyor. "Şimdi nolcak?" sorusu burada da "değerlerimizi koruyacağız" ile geçiştiriliyor.</p>
-            <div class="stat-row"><span class="stat-lbl">TARİHİ KİMLİK</span><div class="stat-bar"><div class="stat-fill" style="width:93%;background:linear-gradient(90deg,#D6EAF8,#2E86C1)"></div></div><span class="stat-e">📜</span></div>
-            <div class="stat-row"><span class="stat-lbl">BUGÜNÜ OKUMA</span><div class="stat-bar"><div class="stat-fill" style="width:10%;background:#ddd"></div></div><span class="stat-e">🌫️</span></div>
-            <div class="stat-row"><span class="stat-lbl">REPÜTASYON KAYGISI</span><div class="stat-bar"><div class="stat-fill" style="width:95%;background:linear-gradient(90deg,#D6EAF8,#2E86C1)"></div></div><span class="stat-e">👁️</span></div>
-            <div class="pkg-review">"Ben Kemalist'im ama bugünkü CHP'yi tanımıyorum." <span class="stars">★★★★★</span></div>
-          </div>
-        </div>
-
-        <div class="div-c">· · ·</div>
-        <div class="box" style="text-align:center">
-          <p>"Şimdi nolcak?" sorusuna bu dünyada cevap yok.<br>Bu beş tutumun hiçbiri bu soruyu soramaz.<br>
-          <span style="font-size:12px;color:var(--textx)">Ama Bunea Minako-Yim'in bir şey söylemek istiyor.</span></p>
-        </div>
-
-        <!-- MINAKO -->
-        <div class="minako-tal">
-          <span class="m-rb">🌈</span>
-          <div><span class="m-e" onclick="go('sm1')">🦄</span>
-          <div class="m-namelbl">Bunea Minako-Yim</div></div>
-          <div class="m-bubble">
-            <div class="mb-who">🌈 Bunea Minako-Yim</div>
-            <div class="mb-txt">meraba. üzerime binmek ister misin? seni saçmasapan biyere götürcem.</div>
-            <button class="mb-btn" onclick="go('sm1')">bin 🦄→</button>
-          </div>
+      <div class="pkg" style="--n:#FF2D78">
+        <div class="pkg-top"><span class="pkg-icon">🕊️</span>
+          <div><div class="pkg-name">Şükreden Fatalist</div><div class="pkg-sub">Devlet büyüklerinin bi bildiği vardır.</div></div></div>
+        <div class="pkg-body">
+          <p class="pkg-desc">Ekonomi kötü ama peynir ekmek yenir. Zor günler var ama bunun böyle olmasını isteyen dış güçler var. Devlet ne yapıyorsa bir hikmeti vardır. Sistem değişmez — zaten değişmesine gerek de yok. Sabır bir erdem, şikayet bir nankörlük.</p>
+          <div class="stat-row"><span class="stat-lbl">SABIR SEVİYESİ</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div><span class="stat-e">😌</span></div>
+          <div class="stat-row"><span class="stat-lbl">SORGULAMAK</span><div class="stat-bar"><div class="stat-fill" style="width:3%;background:#333;box-shadow:none"></div></div><span class="stat-e">🌸</span></div>
+          <div class="stat-row"><span class="stat-lbl">DIŞ AKTÖR SUÇU</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div><span class="stat-e">🕊️</span></div>
+          <div class="pkg-review">"Devlet büyüklerinin bi bildiği vardır. Ekonomi kötü olsa da peynir ekmek yiceiz. Evet zor ama bunun böyle olmasını Amerika istiyo. İsrail lobisi istiyo." <span class="stars">★★★★★</span></div>
         </div>
       </div>
 
-      <!-- SM1: BRİEFİNG -->
-      <div class="sc" id="sm1">
-        <div class="m-card">
-          <div class="m-hdr">
-            <span class="m-av">🦄</span>
-            <div><div class="m-who2">Bunea Minako-Yim konuşuyor</div>
-            <div class="m-sub2">güvenilirlik: orta-yüksek · saçmalık: orta</div></div>
-          </div>
-          <p class="m-p"><strong>şimdi. biliyorum.</strong></p>
-          <p class="m-p">durum şu:</p>
-
-          <div class="info-i" style="--ic:#FF6B9D">
-            <div class="info-h">🔴 mutlak butlan · mayıs 2026</div>
-            <div class="info-b">Mahkeme CHP'nin iki kurultayını yok hükmünde saydı. Kılıçdaroğlu 78 yaşında geri döndü. "Arınma" söylemi. "Ahlak" söylemi. Zayıf yerden vurmaya çalışıyor — ama bu aslında ne kadar süredir böyle olduğunun da tescili.</div>
-          </div>
-
-          <div class="info-i" style="--ic:#9B59B6">
-            <div class="info-h">🟣 Kılıçdaroğlu ne temsil ediyor?</div>
-            <div class="info-b">Kontrol edilebilir, ayarlanmış, sembolik muhalefet. Bunu yaparken muhalif herkesin en hassas noktasına basıyor: değerler, Atatürk, ahlak. Liberal sol, Kürt hareketi, <span data-tip='"yetmez ama evet" — 2010 anayasa referandumunda AKP'nin önerisine çekimser destek veren sol-liberal kesim'>yetmez ama evet</span> tayfası bunu uzun zamandır söylüyordu. Şimdi herkes görüyor.</div>
-          </div>
-
-          <div class="info-i" style="--ic:#00B894">
-            <div class="info-h">🟢 ama bir şey değişti</div>
-            <div class="info-b">Özgür Özel aktif direnişte. <span data-tip="tazyikli su ile dağıtma aracı — Türk siyasetinde sembolik bir karşılaşma noktası">Toma</span>'ya çıkana kadar CHP ciddiye alınmıyordu. İmamoğlu ise: kravat yok, filtre yok, içeri alınırken bile video koyan, "zırtapozlar bir şey yapıyorlar ama merak etmeyin" diyen bir duruş. İlk defa <strong>"şimdi nolcak?"</strong> sorusu soruluyor — ve cevap yok. Bu iyi.</div>
-          </div>
-
-          <div class="info-i" style="--ic:#FDCB6E">
-            <div class="info-h">🟡 formülsüzlük</div>
-            <div class="info-b">Daha önce hep hazır cevap vardı: Kılıçdaroğlu kazanacak, altılı masa, ordunun tutumu, Atatürk'ün ülkesi, Amerika'nın oyunları — bunlar bir spektrumun içinde ideolojik cevaplardı. Şimdi AKP'li de "şimdi nolcak?" diye soruyor. <span data-tip="hazır bir formüle sığmayan, öngörülemeyen bir siyasi an">Formülsüzlük</span> bu sefer herkes için geçerli.</div>
-          </div>
-        </div>
-        <button class="btn btn-pink" onclick="go('sm2')">tamam ve? 👀</button>
-      </div>
-
-      <!-- SM2: AMA -->
-      <div class="sc" id="sm2">
-        <div class="m-card">
-          <div class="m-hdr">
-            <span class="m-av">🦄</span>
-            <div><div class="m-who2">Bunea Minako-Yim devam ediyor</div>
-            <div class="m-sub2">biraz daha ciddi ama hâlâ ben</div></div>
-          </div>
-          <p class="m-p"><strong>ama. bi olasılık daha var.</strong></p>
-          <div style="text-align:center;margin:14px 0"><div class="badge-exp">🧪 deneysel · spekülatif · henüz olmamış</div></div>
-
-          <p class="m-p">ankara kulislerinde dolaşan bir senaryo. resmi değil. ama önemli bir farkı var.</p>
-
-          <div class="m-aside">
-            bu dünyada gördüğün beş tutumun hiçbiri bunu üretemez. şükreden fatalist beklemez. coğrafya deterministi "bu topraklarda olmaz" der. yorulmuş idealist "palavra" der. sistem suçlayıcı "kapitalizmi aklamak" der. repütasyoncu kemalist kimin daha Kemalist göründüğüne bakar. hiçbirinin spesifik bir matematik üretmesi gerekmiyor ki.
-          </div>
-
-          <p class="m-p">ve asıl mesele: <strong>buna inanmak zorunda değilsin.</strong> sadece ne olduğunu görmek lazım.</p>
-          <p class="m-p" style="font-size:13px;color:var(--textx)">gitmek ister misin?</p>
-        </div>
-        <button class="btn btn-rb" onclick="go('sm3')">götür beni Bunea Minako-Yim 🌈</button>
-        <button class="btn btn-ghost" onclick="go('s1')">gerek yok</button>
-      </div>
-
-      <!-- SM3: SENARYO — FULLY REFRAMED -->
-      <div class="sc" id="sm3">
-        <div style="text-align:center;margin-bottom:16px">
-          <span class="m-rb">🌈</span>
-          <span style="font-size:50px;display:inline-block;animation:mf 2.5s ease-in-out infinite">🦄</span>
-          <div style="font-size:11px;color:#C550A7;font-weight:800;margin-top:5px">Bunea Minako-Yim sunar</div>
-          <div class="badge-exp">🧪 deneysel · spekülatif</div>
-        </div>
-
-        <div class="m-card">
-          <div class="m-hdr">
-            <span class="m-av">🦄</span>
-            <div><div class="m-who2">Bunea Minako-Yim açıklıyor</div>
-            <div class="m-sub2">kaynak: nuray babacan / nefes · haziran 2026</div></div>
-          </div>
-
-          <p class="m-p"><strong>önce bir şeyi netleştireyim.</strong></p>
-          <p class="m-p">bu senaryo muhafazakar kulislerden çıktı. ama bunu inanmak için değil, <span data-tip="başkasının kendi çıkarı için sağladığı fırsattan yararlanmak — güven gerektirmez, çakışma noktası yeterli">free ride</span> etmek için bakacaksın.</p>
-
-          <div style="height:1px;background:rgba(0,0,0,.08);margin:16px 0"></div>
-          <p class="m-p" style="font-size:13px;font-weight:700;color:var(--texts)">iki farklı pragmatizm var. karıştırma.</p>
-
-          <div class="sc-i">
-            <div class="sc-h">🌿 Kürt hareketinin pragmatizmi</div>
-            <div class="sc-b">İdeolojik zeminden geliyor. <span data-tip='"taş basma" — Demirtaş'ın cezaevinden başlattığı sembolik eylem, sonuçsuz kaldı ama hareket güç kaybetmedi'>Demirtaş'ın belirli eylemi</span> işe yaramadı ama kabullendiler ve hareket güç kaybetmedi. Çünkü ideoloji sağlam. Kurumsal geçmişleri var. "Savaşı kaybettik ama savaşı değil" diyebiliyorlar.</div>
-          </div>
-          <div class="sc-i">
-            <div class="sc-h">🌱 CHP'nin yeni pragmatizmi</div>
-            <div class="sc-b">Yeni. Özel'in tomayla karşılaşmasına kadar CHP bu noktaya gelmemişti. Kurumsal ciddiyet eksikti. Şimdi yeni bir şey oluyor — ama bu hareket henüz kendi zeminine tam oturmadı.</div>
-          </div>
-
-          <div class="m-aside">
-            aynı kelime, farklı bağlamlar. <span data-tip="siyasi gerçekçilik — mevcut güç dengelerini kabul edip içinde çalışmak">pragmatizm</span> her ikisinde de var ama biri köklü bir ideolojinin uzantısı, diğeri yeni keşfedilen bir tutum. bu farkı bilmek önemli.
-          </div>
-
-          <div style="height:1px;background:rgba(0,0,0,.08);margin:16px 0"></div>
-          <p class="m-p" style="font-size:13px;font-weight:700;color:var(--texts)">şimdi o senaryo:</p>
-
-          <div class="sc-i">
-            <div class="sc-h">📜 anayasa değişikliği</div>
-            <div class="sc-b"><span data-tip="güçlendirilmiş parlamenter sistem — cumhurbaşkanlığının yetkilerini kısıtlayan, meclisin ağırlığını artıran sistem değişikliği">Güçlendirilmiş parlamenter sisteme geçiş.</span> Erdoğan bir dönem yetkisiz-sembolik cumhurbaşkanı. "Onurlu çıkış." Ailesi korunuyor. Ankara kulislerinde iktidar dahil analiz edilen senaryo.</div>
-          </div>
-          <div class="sc-i">
-            <div class="sc-h">✅ eş zamanlı serbest bırakmalar</div>
-            <div class="sc-b">İmamoğlu, Demirtaş, diğer siyasi tutuklular. Anayasa değişikliği aşamasında gerçekleşiyor. İmamoğlu başbakan adayı olabiliyor.</div>
-          </div>
-          <div class="sc-i">
-            <div class="sc-h">🗳️ rekabetçi 2028</div>
-            <div class="sc-b">İmamoğlu-Özel ikilisi seçime giriyor. Demirtaş daha geniş tabanlı bir yapıya zemin hazırlıyor. Kürt siyasi haklarında somut adımlar.</div>
-          </div>
-          <div class="sc-i warn">
-            <div class="sc-h">⚠️ caveat — ve neden sorun değil</div>
-            <div class="sc-b">Muhafazakarlar kendi <span data-tip="yumuşak iniş — hesapsız, az hasarlı geçiş">soft landing</span>'ini istiyor. Hesap yok, Erdoğan ailesi korunuyor. Bu tam da free ride'ın zemini. Onların niyetine inanmak zorunda değilsin — <strong>çakışma noktasını kullanmak zorundasın.</strong></div>
-          </div>
-          <div class="sc-i">
-            <div class="sc-h">🌍 ve zemin</div>
-            <div class="sc-b">Trump <span data-tip="eylemlerin sonuçlarından bağımsız olarak ideolojik pozisyona göre karar verme biçimi — 'kazanıyor muyum?' değil 'doğru tarafta mıyım?' sorusu">non-consequentialist</span> otoriteryenizmini bütün kartlarıyla oynadı ve tıkandı. Sağ popülizm momentumu var ama makro eğilimde bir kırılma var. Bu kırılma olmadan bu senaryo mümkün değildi. Bu oldu, başka bir yerde. <span data-tip="emsal — hukuk ve siyasette daha önce gerçekleşmiş, benzer bir durum. 'bu mümkün' demek için yeterli.">Emsal var.</span></div>
-          </div>
-
-          <div style="background:linear-gradient(135deg,rgba(232,195,255,.25),rgba(174,214,241,.25));border-radius:13px;padding:15px;margin-top:13px">
-            <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px">
-              <span style="font-size:22px">🦄</span>
-              <span style="font-size:11px;color:#C550A7;font-weight:800">Bunea Minako-Yim'in özeti</span>
-            </div>
-            <p style="font-size:13px;color:var(--texts);line-height:1.85">tamam, her istediğin olmicak. adil değil. mükemmel değil. ama bu dünyada gördüğün beş tutumun hiçbirinin üretemeyeceği bir matematik bu. <span data-tip="yere inmek, gerçeklikle temasa geçmek — düzlenmiş bir zemine ulaşmak">touching the grass</span>. oraya geldikten sonra gerçek ilerleme <span data-tip="gizlenmiş, kamufle edilmiş — açıkça değil ama sistem içinden işleyen">in disguise</span> çalışmaya başlar. en azından ben öyle düşünüyorum.</p>
-          </div>
-        </div>
-
-        <button class="btn btn-mint" onclick="endGame()">tamam Bunea Minako-Yim, teşekkürler 🌈</button>
-      </div>
-
-      <!-- BİTİŞ -->
-      <div class="sc" id="send">
-        <div class="end-wrap">
-          <span style="font-size:78px;display:inline-block;animation:bb 1.2s ease-in-out infinite;margin-bottom:12px">🦄</span>
-          <div style="font-size:24px;font-weight:900;margin-bottom:8px" class="rb-text">iyi yolculuklar</div>
-          <p style="font-size:15px;color:var(--texts);line-height:1.9;margin-bottom:22px">şimdi nolcak?<br>bilmiyoruz. ama sormak başlamak.</p>
-          <button class="btn btn-ghost" onclick="restart()" style="max-width:210px;margin:0 auto">↺ baştan başla</button>
+      <div class="pkg" style="--n:#00C5AA">
+        <div class="pkg-top"><span class="pkg-icon">🗺️</span>
+          <div><div class="pkg-name">Coğrafya Deterministi</div><div class="pkg-sub">Abi bu halk böyle. Napalım.</div></div></div>
+        <div class="pkg-body">
+          <p class="pkg-desc">Her şeyi biliyor ama hiçbirini bitiremiyor. Özal'dan NATO'ya, Hazar Türklerine, Atatürk'ün her şeyi önceden görmesine kadar her şey birbirine bağlı. Çanakkale'ye gidince kafası dinlenecek. Şu an co istiyor ama kimseye söyleme.</p>
+          <div class="stat-row"><span class="stat-lbl">KONU DEĞİŞTİRME</span><div class="stat-bar"><div class="stat-fill" style="width:99%"></div></div><span class="stat-e">🌀</span></div>
+          <div class="stat-row"><span class="stat-lbl">KONUYA DÖNME</span><div class="stat-bar"><div class="stat-fill" style="width:3%;background:#333;box-shadow:none"></div></div><span class="stat-e">😵</span></div>
+          <div class="stat-row"><span class="stat-lbl">İÇ TUTARLILIK</span><div class="stat-bar"><div class="stat-fill" style="width:7%;background:#333;box-shadow:none"></div></div><span class="stat-e">🌵</span></div>
+          <div class="pkg-review">"Abi bak benim babam Özalcıydı ama en büyük kazığı Özal açtı ama hakkını da yemeyelim. Aslında Türkler Yahudi soyundan gelmektedir abi Hazar Türkleri var. Abi petrolümüz olsa ohoo. Ben Çanakkale'ye giceğim bi hafta. Sende co var mı ama kimseye söyleme." <span class="stars">★★★★★</span></div>
         </div>
       </div>
 
-    </div><!-- /wrap -->
-  </div><!-- /fantasy-bg -->
-</div><!-- /fantasy-world -->
+      <div class="pkg" style="--n:#9B59FF">
+        <div class="pkg-top"><span class="pkg-icon">🕯️</span>
+          <div><div class="pkg-name">Yorulmuş İdealist</div><div class="pkg-sub">Mühendislik okudum. Maltepe'de Excel yapıyorum.</div></div></div>
+        <div class="pkg-body">
+          <p class="pkg-desc">Mühendislik okudu, şimdi bir şirkette finansal pazarlama excel dosyaları yapıyor. Atatürk Balkan'dı ve her şeyi önceden görmüştü. Twitter analizleri gizli bilgi içeriyor. Berktaycan'ın dediği gibi bir saldırı olacak.</p>
+          <div class="stat-row"><span class="stat-lbl">TWİTTER ANALİZİ</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div><span class="stat-e">📊</span></div>
+          <div class="stat-row"><span class="stat-lbl">İŞE UYGULAMAK</span><div class="stat-bar"><div class="stat-fill" style="width:4%;background:#333;box-shadow:none"></div></div><span class="stat-e">🌀</span></div>
+          <div class="stat-row"><span class="stat-lbl">GİZLİ BİLGİYE ERİŞİM</span><div class="stat-bar"><div class="stat-fill" style="width:97%"></div></div><span class="stat-e">🔍</span></div>
+          <div class="pkg-review">"Abi hayır aslında Atatürk Balkan abi ve onlar görmüş bu Anadolu insanı böyle işte. Abi mühendislik okudum şimdi bi şirkette excel yapıyorum Maltepe benim ofis. Dün bi Twitter'da bişey yayınladım saldırı olcak abi. Bekle sen gör dedi dersi Berktaycan." <span class="stars">★★★★★</span></div>
+        </div>
+      </div>
+
+      <div class="pkg" style="--n:#0090FF">
+        <div class="pkg-top"><span class="pkg-icon">🏛️</span>
+          <div><div class="pkg-name">Repütasyoncu Kemalist</div><div class="pkg-sub">"Mustafa Kemal'in partisine ihanet ettiler."</div></div></div>
+        <div class="pkg-body">
+          <p class="pkg-desc">Atatürk'e gerçek bir bağlılık var. Ama bu bağlılık bugünkü siyaseti analiz etmeyi değil, kimin ne kadar Kemalist göründüğünü izlemeyi önceliklendiriyor. <span data-tip="itibarı ve sembolik doğruluğu somut adımların önünde tutmak — temsil kaygısı" class="fantasy-tip" style="border-bottom-color:rgba(0,144,255,.5)">Repütasyonculuk</span> önceliyor. İnönü bile Amerika'nın adamıydı — geriye ne kaldı ki.</p>
+          <div class="stat-row"><span class="stat-lbl">TARİHİ KİMLİK</span><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div><span class="stat-e">📜</span></div>
+          <div class="stat-row"><span class="stat-lbl">BUGÜNÜ OKUMA</span><div class="stat-bar"><div class="stat-fill" style="width:9%;background:#333;box-shadow:none"></div></div><span class="stat-e">🌫️</span></div>
+          <div class="stat-row"><span class="stat-lbl">REPÜTASYON KAYGISI</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div><span class="stat-e">👁️</span></div>
+          <div class="pkg-review">"CHP neydi abi? Kimin partisiydi abi? Abi İnönü bile Amerika'nın adamıydı. Kanım altı ok akar bak Mustafa Kemaliziz biz TECE." <span class="stars">★★★★★</span></div>
+        </div>
+      </div>
+
+      <div class="pkg" style="--n:#FF4136">
+        <div class="pkg-top"><span class="pkg-icon">🌏</span>
+          <div><div class="pkg-name">Anti-Emperyalist Avrasyacı</div><div class="pkg-sub">Perinçek haklıydı. Bak şimdi. BRICS.</div></div></div>
+        <div class="pkg-body">
+          <p class="pkg-desc">Maocu başladı, <span data-tip="Doğu Perinçek ve Vatan Partisi çizgisi — Maocu kökenden Kemalist-Avrasya milliyetçiliğine kayış. Anti-NATO, Rusya-Çin'i taktik müttefik gören çizgi" class="fantasy-tip" style="border-bottom-color:rgba(255,65,54,.5)">Avrasyacı</span> oldu. Atatürk anti-emperyalistti, o da öyle. Rusya emperyalist mi? Evet ama Amerika'dan iyi. Erdoğan'ı sevmez ama F-35 davasında haklı bulur. <span data-tip="zaman zaman gizli, zaman zaman açık pro-Putin pozisyon — bağlama göre kayma" class="fantasy-tip" style="border-bottom-color:rgba(255,65,54,.5)">It slides.</span></p>
+          <div class="stat-row"><span class="stat-lbl">AMERİKA BİTİYOR</span><div class="stat-bar"><div class="stat-fill" style="width:99%"></div></div><span class="stat-e">🌏</span></div>
+          <div class="stat-row"><span class="stat-lbl">İÇ TUTARLILIK</span><div class="stat-bar"><div class="stat-fill" style="width:10%;background:#333;box-shadow:none"></div></div><span class="stat-e">🌀</span></div>
+          <div class="stat-row"><span class="stat-lbl">ÇELİŞKİ FARKINDALIĞI</span><div class="stat-bar"><div class="stat-fill" style="width:2%;background:#333;box-shadow:none"></div></div><span class="stat-e">😶</span></div>
+          <div class="pkg-review">"Abi Atatürk zaten Sovyetlerle ittifak yapmıştı. Kemalizm anti-emperyalizm demek. Mao da aynı şeyi dedi. Çin kapitalist ama Amerika'ya karşı bu yüzden destekleriz. Erdoğan F-35'i reddetti. Perinçek 40 yıl önce söyledi hepsini. BRICS'e gireceiz abi sen bu ülkeyi sev yeter." <span class="stars">★★★★★</span></div>
+        </div>
+      </div>
+
+      <div onclick="enterFantasy()" style="margin:44px 0 20px;border:2px solid rgba(197,80,167,.55);border-radius:16px;padding:28px 24px;cursor:pointer;text-align:center;background:rgba(197,80,167,.06);transition:background .2s" onmouseover="this.style.background='rgba(197,80,167,.14)'" onmouseout="this.style.background='rgba(197,80,167,.06)'">
+        <div style="font-size:44px;margin-bottom:10px;animation:fl 2.5s ease-in-out infinite;display:inline-block">🦄</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:11px;color:rgba(197,80,167,.7);font-weight:900;letter-spacing:3px;margin-bottom:6px">Bunea Minako-Yim</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.75);line-height:1.5;margin-bottom:14px">Üzerime binmek ve bu 'aydınlanmış' insanların aksine, matrixe geri dönmek ister misin?</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:14px;font-weight:900;color:#C550A7;letter-spacing:4px">GEL OTUR →</div>
+      </div>
+
+    </div><!-- /cards-inner -->
+  </div><!-- /cards-wrap -->
+</div><!-- /sf2 -->
+
+<div id="cf" style="position:fixed;inset:0;pointer-events:none;z-index:200;display:none"></div>
+
+<!-- ═══════════ FANTASY WORLD ═══════════ -->
+<div id="fantasy" style="display:none">
+
+  <!-- SF3: TARİH -->
+  <div class="fsc fw-outer" id="sm1">
+    <div class="fw" style="position:relative;z-index:1">
+      <h2 style="font-family:Times,'Times New Roman',serif;font-size:36px;font-weight:900;color:#000;margin-bottom:28px">Buraya nasıl geldik, merak ediyorum.</h2>
+      <div class="tl-item"><div class="tl-num">01</div><div><div class="tl-title">90lar: Apolitizm, TV, Amerikanlaşmak</div><div class="tl-body">Çılgın Bediş. Mehmet Ali Erbil. Cem Yılmaz. İbo Show. Talkshow. Eleştirel teorinin gürültüye gitmesi. Bunun içinden doğan seksizm ve sarkastik, gayri ciddi bir seksüelizasyon — ve onun çocuklarının milliyetçiliği. Apolitizmden doğan bir kimlik. Boşluktan beslenildi.</div></div></div>
+      <div class="tl-item"><div class="tl-num">02</div><div><div class="tl-title">2000ler: Liberal-Muhafazakar Reform Birliği</div><div class="tl-body">Bilgi Üniversitesi. NTV. Radyo Eksen. Radikal Gazetesi. Ermeni soykırımını diyebilmek. Kürt açılımı. Erdoğan'ın normalizasyon politikaları bir çıkış gibi görünüyordu — Murat Belge gibiler için öyleydi de. Smart sol, liberal sol. Dönemin kör noktaları henüz belli değildi.</div></div></div>
+      <div class="tl-item"><div class="tl-num">03</div><div><div class="tl-title">Mid-2000ler: One Minute, Mavi Marmara, Cihangir</div><div class="tl-body">İnternet yasakları. 1 Dakika, Mavi Marmara. Anti-emperyalist söylemin zemini sessizce hazırlanıyordu. Liberal sol henüz rahatsız değildi — entelektüel olarak üst zeminde hissediyordu kendini. Radikal'de yazılar çıkıyordu. Caz festivali. Sarafin. Cihangir'de kahve. AB istemeyebilir, niche zevkler tatmin ediyordu. Zorlama bir iyimserlik. Karışık bir dönem.</div></div></div>
+      <div class="tl-item"><div class="tl-num">04</div><div><div class="tl-title">Gezi, KHK, Suruç, 15 Temmuz</div><div class="tl-body">Gezi yıkıldı. KHK'lar geldi. Suruç. IŞİD bombası. 15 Temmuz. Ve ardından: mum dikmek. lol.</div></div></div>
+      <div class="tl-item"><div class="tl-num">05</div><div><div class="tl-title">İmamoğlu: A New Hope — Harbi</div><div class="tl-body">Maço. Sokak zekası. Yerli ve etnik. "Ne Pontusu lan? Ayrıca hepimiz bu memleketin insanlarıyız." Polarizasyonu sıradan mantıkla geçersiz kılmak. Kolay olduğunu göstermek. Gerekirse elini de kirletebilecek — kravat, dükkandaki adamın yanağını sıvazlayıp de-masküle etmek. Rahatlık vermek. A new hope — harbi.</div></div></div>
+      <div class="tl-item"><div class="tl-num">06</div><div><div class="tl-title">Brexit, Trump: Doomer Core Başlıyor</div><div class="tl-body">Gerçek öyle bir çamura döndü ki "common sense" adına liberal kazanımları yıkmak mümkün oldu. LGBT+, feminizm, azınlık hakları, nöroçeşitlilik, göçmen hakları — "postmodernizm" diye paketlenip hedef alındı. Orta sınıfın eşitlenme ve sınıf atlama hayallerine çomak sokuldu. Primordiyal güdülere konuşan vaatler. Ukrayna desteğini de bu çerçeveye sokmak. Doomer core burada başladı.</div></div></div>
+      <div class="tl-item"><div class="tl-num">07</div><div><div class="tl-title">Defcon: Gazze, Suriye, İran, Venezuela</div><div class="tl-body">bu da onların (ve bizim de) doomer durum.. <em style="color:rgba(0,0,0,.5)">[Doomer: Karanlık gelecek. Gen Y, Z, Alfa internet terminolojisi]</em></div></div></div>
+      <div class="tl-item"><div class="tl-num">08</div><div><div class="tl-title">Ve Şimdi: Kaybedecek Bir Şeyimiz Kalmadı</div><div class="tl-body">Onların kaybedecek çok şeyi var artık. Bizim kaybedecek bir şeyimiz kalmadı. Kazanabilecekleri yeni bir şey de yok. Bu yüzden her şey şu an gayet temiz görünüyor.</div></div></div>
+      <div class="tl-item"><div class="tl-num">09</div><div><div class="tl-title">Kılıçbaliğidar is back, alright</div><div class="tl-body">Mutlak butlanıldı. Kimse s*kne t*şağına takmıyor. No worries.</div></div></div>
+      <button onclick="window.close()" style="display:block;width:100%;background:#000;color:#FFD700;font-family:Times,'Times New Roman',serif;font-size:20px;font-weight:900;border:none;padding:18px 24px;cursor:pointer;margin-top:24px;border-radius:8px">aynn aynn tbi tbi knk 🚬🚬🚬</button>
+      <div style="font-family:Times,'Times New Roman',serif;font-size:16px;color:rgba(0,0,0,.35);text-align:center;padding:12px 0;font-style:italic">veya</div>
+      <button onclick="goToFantasy('sm3')" style="display:block;width:100%;background:linear-gradient(180deg,#55CDFC 0%,#55CDFC 20%,#F7A8B8 20%,#F7A8B8 40%,#fff 40%,#fff 60%,#F7A8B8 60%,#F7A8B8 80%,#55CDFC 80%,#55CDFC 100%);border:none;border-radius:8px;padding:16px 24px;cursor:pointer;font-family:Times,'Times New Roman',serif;font-size:17px;font-style:italic;color:rgba(0,0,0,.7);font-weight:700">kulislerde bişey konuşuluyor... #DedikoduSeverim</button>
+    </div>
+  </div>
+
+  <!-- SF4: HALİS KULİS -->
+  <div class="fsc fw-outer" id="sm3">
+    <div class="fw" style="position:relative;z-index:1">
+      <div class="halis-h">HALİS KULİS</div>
+      <div class="halis-s">Nefes'te Nuray Babacan yazmış. İngilizcede bi söz vardır: Take it with a grain of salt... diye</div>
+      <div class="m-card">
+        <div class="m-aside">Demirtaş 2019'da <span data-tip="yaramıza taş basmak — gerçekçilik adına taktik bir fedakarlık. İstanbul seçiminde HDP bazı şehirlerde aday çıkarmadı, stratejik destek verdi.">yaramıza taş bastı</span>. İşe yaramadı, o adım. Ama kabullendiler. Hareket güç kaybetmedi. Bundan önce, 2014'te <span data-tip="2014 cumhurbaşkanı adayı. Liberal sol onu sevmiyordu ama 'halkın oy vereceği bu' diye pragmatik destek verdi.">Ekmelettinİhsanoğlu</span>'nu sevmemiştik — ama "halkın oy vereceği bu" diye pragmatik destek verdik. Kılıçdaroğlu'nun 6'lı masası da aynı mantığın devamıydı. Bu pragmatizm değil diye bir şey yok. Ama şimdi bu senaryo farklı bir şey soruyor.</div>
+        <div class="sc-i">
+          <div class="sc-h">📜 yeni anayasa</div>
+          <div class="sc-b">LGBT falan hiç ağza alınmadan, "toplumsal değerler" falan yani denmeden — daha çok ekonomi. Erdoğan, ailesi ve çevresi indiğinde yargılanmayacakları bir immunity bekliyor. Karşılığında: gereksiz popülist kararlar yok. Daha çok ekonomik kalkınma, dış yatırım çekme, yabancılara açılım. Kısacası bi soft-landing yaşanacak.</div>
+        </div>
+        <div class="sc-i">
+          <div class="sc-h">✅ eş zamanlı serbest bırakmalar</div>
+          <div class="sc-b">İmamoğlu, Demirtaş, diğer siyasi tutuklular. Anayasa değişikliği aşamasında gerçekleşiyor. İmamoğlu başbakan adayı olabiliyor.</div>
+        </div>
+        <div class="sc-i">
+          <div class="sc-h">🗳️ DIN DIDI DIN.. LOADING</div>
+          <div class="sc-b">İmamoğlu-Özel seçime giriyor. Demirtaş daha geniş tabanlı bir yapıya zemin hazırlıyor. Kürt siyasi haklarında somut adımlar.</div>
+        </div>
+        <div class="sc-i">
+          <div class="sc-h">🌍 GULOBAL</div>
+          <div class="sc-b">Trump'ın <span data-tip="başkalarının sonuçlarını düşünmeden, sadece kendi sezgileri ve kimliğiyle karar veren siyaset yapma tarzı">hovarda/ergen</span> otoriteryenizmi tıkandı. Sağ popülizm momentumu var ama makro kırılma var. Bu kırılma olmadan bu senaryo mümkün değildi. Başka bir yerde oldu. <span data-tip="emsal — hukuk ve siyasette daha önce gerçekleşmiş benzer durum. 'bu mümkün' demek için yeterli.">Emsal var.</span></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:28px">
+        <button onclick="nav('sm4')" style="background:#fff;border:3px solid #CC0000;border-radius:14px;cursor:pointer;font-family:Times,'Times New Roman',serif;font-size:36px;font-weight:900;color:#CC0000;padding:16px 44px;letter-spacing:2px">aight... →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SF5: YAVAŞ İMAM -->
+  <div class="fsc fw-outer" id="sm4">
+    <div class="fw" style="position:relative;z-index:1">
+      <div class="m-card" style="padding:28px">
+        <div style="font-family:Times,'Times New Roman',serif;font-size:30px;font-weight:900;color:#222;margin-bottom:18px">Yavaş İmam Problemi</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:20px;color:#444;line-height:1.85;margin-bottom:36px">Adam fazla boomer. Kürt bayrağı benim nezdimde paçavradır dedi mk. İmam da Lemanın karikatürünü "olmaz böyle şey" diye kınadı içerdeyken.</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:30px;font-weight:900;color:#222;margin-bottom:18px">Özel Yigit Aslanım</div>
+        <div style="font-family:Times,'Times New Roman',serif;font-size:20px;color:#444;line-height:1.75">Hep bu çalıyor, plak bile eridi.</div>
+      </div>
+      <button onclick="nav('sm5')" class="kiddy-btn">biraz daha yürü bakiyim boynuzlu at 🦄</button>
+    </div>
+  </div>
+
+  <!-- SF6: ÖZEL / ZİŽEK (Communist) -->
+  <div class="fsc fw-outer" id="sm5">
+    <div class="fw" style="position:relative;z-index:1">
+      <div class="comm-card">
+        <div class="comm-h">💭 Žižek'e bir göz kırpmak</div>
+        <div class="comm-b"><em>"V for Vendetta Part 2'yi görmek için annemi köleliğe satardım. Devrimden sonra ne olacak? Chill. Don't act: think."</em><br><br>Kastettiği: akıllıca düşünmekten korkmayalım. Harekete geçmeden önce nefes alalım. Şu an en çok ihtiyacımız olan şey bu — ekstra bir çaba kaygısı değil, organik olanın farkına varmak.</div>
+      </div>
+      <div class="comm-card">
+        <div class="comm-h">💨 Adam tomaya çıktı. Gaz yedi. Tüple gaz sıktı. Kararnameyi yırttı.</div>
+        <div class="comm-b">Özgür Özel'in yaptığı şey bu. Fiziksel, bedensel, somut bir direnç. Kürt hareketinin yıllarca sürdürdüğü sıkı, yekpare, asla yıkılmayan duruşunun — büyük muhalefetin içinde ilk gerçek yansıması. Yıllar önce öyle bir şeyin buraya taşınacağına inanmak zordu.</div>
+      </div>
+      <div class="comm-card">
+        <div class="comm-h">🌀 Kılıçbaliğı şimdi sadece bir son deneme</div>
+        <div class="comm-b">Deneme bile değil. Sistemin kendi içindeki son kozunu oynadığını gösteriyor. Buna karşı durulabildiği artık görüldü.</div>
+      </div>
+      <button onclick="endGame()" style="display:block;width:100%;padding:22px 24px;background:#000;color:#CC0000;border:none;cursor:pointer;font-family:Times,'Times New Roman',serif;font-size:32px;font-weight:900;margin-top:14px;border-radius:8px">AY YÜKSELDİM!!!! 💦</button>
+    </div>
+  </div>
+
+  <!-- SF7: SEND -->
+  <div class="fsc fw-outer p-grey" id="send">
+    <div style="max-width:480px;margin:0 auto;padding:80px 24px">
+      <p style="font-family:Times,'Times New Roman',serif;font-size:28px;font-weight:900;color:#333;text-align:center;margin-bottom:6px">iyi olacak.</p>
+      <p style="font-family:Times,'Times New Roman',serif;font-size:16px;color:#999;text-align:center;margin-bottom:44px;font-weight:400">(merak etme.)</p>
+      <a onclick="window.close()" class="send-lnk">💀 beni imha et (mission impossible'sal olunca seksi oluyo)</a>
+      <a href="https://tip.org.tr" target="_blank" class="send-lnk">✊ bi tipe gidiyim (mesele tip değil ama mesele 'tipleşmek'.. )</a>
+      <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" class="send-lnk">📖 yok wikiye gidim</a>
+      <a href="https://twitter.com" target="_blank" class="send-lnk">𝕏 x'e gidiyim x yapıyim</a>
+      <a href="https://instagram.com" target="_blank" class="send-lnk">📱 doomscroll yapim,</a>
+      <a href="https://trends.google.com.tr/trending?geo=TR" target="_blank" class="send-lnk">📈 bişeylere bakim</a>
+    </div>
+  </div>
+
+</div><!-- /fantasy -->
 
 <script>
-// ---- BLADE RUNNER RAIN ----
-(function(){
-  const rain=document.getElementById('brRain');
-  for(let i=0;i<28;i++){
-    const d=document.createElement('div');
-    d.className='raindrop';
-    const h=40+Math.random()*120;
-    d.style.cssText=`left:${Math.random()*100}%;height:${h}px;animation-duration:${0.6+Math.random()*1.2}s;animation-delay:${Math.random()*2}s;opacity:${0.2+Math.random()*0.5}`;
-    rain.appendChild(d);
-  }
-})();
+// ── STATE ──────────────────────────────────
+let cur = 'sf1';
+const prev = {sf2:'sf1',sm1:'sf2',sm3:'sm1',sm4:'sm3',sm5:'sm4',send:'sm5'};
+const BG = {
+  sm1:'transparent', sm3:'p-pink', sm4:'p-lgbt', sm5:'', send:'p-grey'
+};
 
-// ---- ZOOM TRANSITION ----
-function zoomIn(){
-  const world=document.getElementById('br-world');
-  world.classList.add('zooming');
-  setTimeout(()=>{
-    document.getElementById('br-opening').style.display='none';
-    document.getElementById('fantasy-world').style.display='block';
-    document.querySelectorAll('.ptcl').forEach(el=>{
-      const e=['✨','⭐','💫','🌟','🎀','🌸','🦋','🌈'];
-      el.textContent=e[Math.floor(Math.random()*e.length)];
-    });
-  },550);
+// ── RAIN ───────────────────────────────────
+// rain removed
+
+// ── NAVIGATE ───────────────────────────────
+function showBanner(on){
+  document.getElementById('banner').classList.toggle('show',on);
+}
+function showSW(on){
+  document.getElementById('sw-bg').style.display=on?'block':'none';
+  document.getElementById('sun1').style.display=on?'block':'none';
+  document.getElementById('sun2').style.display=on?'block':'none';
+}
+function showCommunist(on){
+  document.getElementById('sm5-bg-el') && (document.getElementById('sm5-bg-el').style.display=on?'block':'none');
+}
+function setBg(id){
+  const fw=document.getElementById('fantasy');
+  // Remove all bg classes
+  ['p-pink','p-erotic','p-harajuku','p-lgbt','p-grey'].forEach(c=>fw.classList.remove(c));
+  if(BG[id]) fw.classList.add(BG[id]);
+  if(id==='sm5') fw.style.background='#BB0000';
+  else fw.style.background='';
 }
 
-// ---- SCREEN NAV ----
-function go(id){
-  document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));
+function goToSF1(){
+  cur='sf1';
+  document.getElementById('sf1').style.display='block';
+  document.getElementById('sf2').style.display='none';
+  document.getElementById('fantasy').style.display='none';
+  document.getElementById('rain').style.display='block';
+  document.getElementById('ads').classList.remove('show');
+  showBanner(false); // unicorn inline showSW(false);
+}
+
+function goToSF2(){
+  cur='sf2';
+  document.getElementById('sf1').style.display='none';
+  document.getElementById('sf2').style.display='block';
+  document.getElementById('fantasy').style.display='none';
+  document.getElementById('rain').style.display='block';
+  document.getElementById('ads').classList.add('show');
+  showBanner(false); // unicorn inline showSW(false);
+}
+
+function goToFantasy(id){
+  cur=id;
+  document.getElementById('sf1').style.display='none';
+  document.getElementById('sf2').style.display='none';
+  document.getElementById('fantasy').style.display='block';
+  document.getElementById('rain').style.display='none';
+  document.getElementById('ads').classList.remove('show');
+  document.querySelectorAll('.fsc').forEach(s=>s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
+  setBg(id);
+  showSW(id==='sm1');
+  if(id==='send'){const b=document.getElementById('banner');b.classList.add('show');b.classList.add('light');}else{const b=document.getElementById('banner');b.classList.remove('light');showBanner(id!=='sf1'&&id!=='sf2');};
+  // unicorn inline
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ---- CLICK-BASED TOOLTIPS (mobile-friendly) ----
-let activeTip=null;
-document.addEventListener('click',function(e){
-  const el=e.target.closest('[data-tip]');
-  if(el){
-    e.stopPropagation();
-    if(activeTip){activeTip.remove();activeTip=null}
-    const tip=document.createElement('div');
-    tip.className='tip-popup';
-    tip.textContent=el.dataset.tip;
-    document.body.appendChild(tip);
-    // position
-    const rect=el.getBoundingClientRect();
-    const tw=Math.min(260,window.innerWidth-20);
-    tip.style.width=tw+'px';
-    const tx=Math.max(10,Math.min(rect.left+rect.width/2-tw/2,window.innerWidth-tw-10));
-    const ty=rect.top-tip.offsetHeight-10+window.scrollY;
-    tip.style.cssText+=`;left:${tx}px;top:${Math.max(window.scrollY+8,ty)}px`;
-    activeTip=tip;
-  } else {
-    if(activeTip){activeTip.remove();activeTip=null}
-  }
-});
+function nav(id){goToFantasy(id)}
+function enterFantasy(){goToFantasy('sm1')}
 
-// ---- CONFETTI + END ----
+function goBack(){
+  const p=prev[cur];
+  if(!p) return;
+  if(p==='sf1') goToSF1();
+  else if(p==='sf2') goToSF2();
+  else goToFantasy(p);
+}
+
+function zoomIn(){
+  try{
+    const btn=document.getElementById('zoom-btn');
+    if(btn){btn.textContent='...';btn.disabled=true;}
+    const wrap=document.querySelector('.br-wrap');
+    if(wrap) wrap.classList.add('zooming');
+  }catch(e){}
+  setTimeout(goToSF2, 520);
+}
+
+
 function endGame(){
-  go('send');
+  goToFantasy('send');
   const w=document.getElementById('cf');w.innerHTML='';w.classList.add('on');
-  const c=['#FFB3C1','#B5EAD7','#C7CEEA','#FFDAC1','#F9F3CC','#AED6F1','#E8C3FF','#FF6B9D'];
+  const c=['#FFB3C1','#B5EAD7','#C7CEEA','#FFDAC1','#AED6F1','#E8C3FF','#FF6B9D'];
   for(let i=0;i<50;i++){
-    const el=document.createElement('div');el.className='cf';
-    el.style.cssText=`left:${Math.random()*100}%;width:${5+Math.random()*8}px;height:${5+Math.random()*8}px;background:${c[Math.floor(Math.random()*c.length)]};animation-duration:${2.5+Math.random()*3}s;animation-delay:${Math.random()*1.5}s;border-radius:${Math.random()>.5?'50%':'2px'}`;
+    const el=document.createElement('div');el.className='cfp';
+    el.style.cssText='left:'+Math.random()*100+'%;width:'+(5+Math.random()*8)+'px;height:'+(5+Math.random()*8)+'px;background:'+c[Math.floor(Math.random()*c.length)]+';animation-duration:'+(2.5+Math.random()*3)+'s;animation-delay:'+Math.random()*1.5+'s;border-radius:'+(Math.random()>.5?'50%':'2px');
     w.appendChild(el);
   }
   setTimeout(()=>{w.classList.remove('on');w.innerHTML=''},6000);
 }
 
-function restart(){
-  document.getElementById('cf').classList.remove('on');
-  document.getElementById('cf').innerHTML='';
-  document.getElementById('fantasy-world').style.display='none';
-  document.getElementById('br-opening').style.display='block';
-  document.getElementById('br-world').classList.remove('zooming');
-  go('s1');
-}
+// ── TOOLTIP ────────────────────────────────
+let tipTimer;
+document.addEventListener('click',function(e){
+  const el=e.target.closest('[data-tip]');
+  const tip=document.getElementById('mtip');
+  const txt=document.getElementById('mtip-txt');
+  if(el && tip && txt){
+    e.stopPropagation();
+    txt.textContent=el.dataset.tip;
+    tip.classList.add('show');
+    clearTimeout(tipTimer);tipTimer=setTimeout(()=>{if(tip)tip.classList.remove('show')},5000);
+  } else if(tip) {
+    tip.classList.remove('show');
+  }
+});
 </script>
 </body>
 </html>
