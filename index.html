@@ -371,7 +371,7 @@ html,body{font-family:Times,"Times New Roman",serif;overflow-x:hidden}
       <div class="tl-item"><div class="tl-num">07</div><div><div class="tl-title">Defcon: Gazze, Suriye, İran, Venezuela</div><div class="tl-body">bu da onların (ve bizim de) doomer durum.. <em style="color:rgba(0,0,0,.5)">[Doomer: Karanlık gelecek. Gen Y, Z, Alfa internet terminolojisi]</em></div></div></div>
       <div class="tl-item"><div class="tl-num">08</div><div><div class="tl-title">Ve Şimdi: Kaybedecek Bir Şeyimiz Kalmadı</div><div class="tl-body">Onların kaybedecek çok şeyi var artık. Bizim kaybedecek bir şeyimiz kalmadı. Kazanabilecekleri yeni bir şey de yok. Bu yüzden her şey şu an gayet temiz görünüyor.</div></div></div>
       <div class="tl-item"><div class="tl-num">09</div><div><div class="tl-title">Kılıçbaliğidar is back, alright</div><div class="tl-body">Mutlak butlanıldı. Kimse s*kne t*şağına takmıyor. No worries.</div></div></div>
-      <button onclick="window.close()" style="display:block;width:100%;background:#000;color:#FFD700;font-family:Times,'Times New Roman',serif;font-size:20px;font-weight:900;border:none;padding:18px 24px;cursor:pointer;margin-top:24px;border-radius:8px">aynn aynn tbi tbi knk 🚬🚬🚬</button>
+      <button onclick="imhaEt()" style="display:block;width:100%;background:#000;color:#FFD700;font-family:Times,'Times New Roman',serif;font-size:20px;font-weight:900;border:none;padding:18px 24px;cursor:pointer;margin-top:24px;border-radius:8px">aynn aynn tbi tbi knk 🚬🚬🚬</button>
       <div style="font-family:Times,'Times New Roman',serif;font-size:16px;color:rgba(0,0,0,.35);text-align:center;padding:12px 0;font-style:italic">veya</div>
       <button onclick="goToFantasy('sm3')" style="display:block;width:100%;background:linear-gradient(180deg,#55CDFC 0%,#55CDFC 20%,#F7A8B8 20%,#F7A8B8 40%,#fff 40%,#fff 60%,#F7A8B8 60%,#F7A8B8 80%,#55CDFC 80%,#55CDFC 100%);border:none;border-radius:8px;padding:16px 24px;cursor:pointer;font-family:Times,'Times New Roman',serif;font-size:17px;font-style:italic;color:rgba(0,0,0,.7);font-weight:700">kulislerde bişey konuşuluyor... #DedikoduSeverim</button>
     </div>
@@ -444,7 +444,7 @@ html,body{font-family:Times,"Times New Roman",serif;overflow-x:hidden}
     <div style="max-width:480px;margin:0 auto;padding:80px 24px">
       <p style="font-family:Times,'Times New Roman',serif;font-size:28px;font-weight:900;color:#333;text-align:center;margin-bottom:6px">iyi olacak.</p>
       <p style="font-family:Times,'Times New Roman',serif;font-size:16px;color:#999;text-align:center;margin-bottom:44px;font-weight:400">(merak etme.)</p>
-      <a href="javascript:window.close()" class="send-lnk">💀 beni imha et (mission impossible'sal olunca seksi oluyo)</a>
+      <a onclick="imhaEt()" class="send-lnk" style="cursor:pointer">💀 beni imha et (mission impossible'sal olunca seksi oluyo)</a>
       <a href="https://tip.org.tr" target="_blank" class="send-lnk">✊ bi tipe gidiyim (mesele tip değil ama mesele 'tipleşmek'.. )</a>
       <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" class="send-lnk">📖 yok wikiye gidim</a>
       <a href="https://twitter.com" target="_blank" class="send-lnk">𝕏 x'e gidiyim x yapıyim</a>
@@ -535,14 +535,12 @@ function goBack(){
 }
 
 function imhaEt(){
-  document.body.style.transition='opacity 1.2s ease';
+  document.body.style.transition='opacity 0.6s ease';
   document.body.style.opacity='0';
   setTimeout(function(){
-    document.body.innerHTML='<div style="background:#000;min-height:100vh;display:flex;align-items:center;justify-content:center"><span style="font-family:Times,serif;font-size:18px;color:rgba(255,255,255,.08);letter-spacing:4px">.</span></div>';
-    document.body.style.opacity='1';
-    document.body.style.transition='none';
-    document.body.style.background='#000';
-  },1200);
+    try{ window.close(); }catch(e){}
+    setTimeout(function(){ location.replace('about:blank'); },200);
+  },600);
 }
 
 function zoomIn(){
