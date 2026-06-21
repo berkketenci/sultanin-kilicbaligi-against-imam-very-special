@@ -444,8 +444,8 @@ html,body{font-family:Times,"Times New Roman",serif;overflow-x:hidden}
     <div style="max-width:480px;margin:0 auto;padding:80px 24px">
       <p style="font-family:Times,'Times New Roman',serif;font-size:28px;font-weight:900;color:#333;text-align:center;margin-bottom:6px">iyi olacak.</p>
       <p style="font-family:Times,'Times New Roman',serif;font-size:16px;color:#999;text-align:center;margin-bottom:44px;font-weight:400">(merak etme.)</p>
-      <a onclick="window.close()" class="send-lnk">💀 beni imha et (mission impossible'sal olunca seksi oluyo)</a>
-      <a href="https://tip.org.tr" target="_blank" class="send-lnk">✊ bi tipe gidiyim (mesele tip değil mesele 'tipleşmek'.. )</a>
+      <a href="javascript:window.close()" class="send-lnk">💀 beni imha et (mission impossible'sal olunca seksi oluyo)</a>
+      <a href="https://tip.org.tr" target="_blank" class="send-lnk">✊ bi tipe gidiyim (mesele tip değil ama mesele 'tipleşmek'.. )</a>
       <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank" class="send-lnk">📖 yok wikiye gidim</a>
       <a href="https://twitter.com" target="_blank" class="send-lnk">𝕏 x'e gidiyim x yapıyim</a>
       <a href="https://instagram.com" target="_blank" class="send-lnk">📱 doomscroll yapim,</a>
@@ -532,6 +532,17 @@ function goBack(){
   if(p==='sf1') goToSF1();
   else if(p==='sf2') goToSF2();
   else goToFantasy(p);
+}
+
+function imhaEt(){
+  document.body.style.transition='opacity 1.2s ease';
+  document.body.style.opacity='0';
+  setTimeout(function(){
+    document.body.innerHTML='<div style="background:#000;min-height:100vh;display:flex;align-items:center;justify-content:center"><span style="font-family:Times,serif;font-size:18px;color:rgba(255,255,255,.08);letter-spacing:4px">.</span></div>';
+    document.body.style.opacity='1';
+    document.body.style.transition='none';
+    document.body.style.background='#000';
+  },1200);
 }
 
 function zoomIn(){
